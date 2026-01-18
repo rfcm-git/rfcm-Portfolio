@@ -23,13 +23,22 @@ import {
   Layers,
   Code2,
   Wrench,
-  Search
+  Search,
+  Play
 } from 'lucide-react';
 
 const App = () => {
   const [engineerType, setEngineerType] = useState('Software');
   const [specialistType, setSpecialistType] = useState(0);
   const [showContactModal, setShowContactModal] = useState(false);
+  
+  // State for Typewriter Effect
+  const fullName = "Richard Francis Malana";
+  const [displayName, setDisplayName] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  
+  // State for Video Player
+  const [activeVideo, setActiveVideo] = useState(null);
   
   // Mouse tracking state for the navbar tilt effect
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -49,6 +58,38 @@ const App = () => {
     { text: "Software Engineer", icon: <Code2 size={12} /> },
     { text: "Computer Technician", icon: <Wrench size={12} /> }
   ];
+
+  // Typewriter Logic with looping
+  useEffect(() => {
+    let index = 0;
+    let typingInterval;
+    let resetTimeout;
+
+    const startTyping = () => {
+      index = 0;
+      setDisplayName("");
+      setIsTypingComplete(false);
+
+      typingInterval = setInterval(() => {
+        if (index <= fullName.length) {
+          setDisplayName(fullName.substring(0, index));
+          index++;
+        } else {
+          setIsTypingComplete(true);
+          clearInterval(typingInterval);
+          // Wait 2 seconds then restart
+          resetTimeout = setTimeout(startTyping, 2000);
+        }
+      }, 100);
+    };
+
+    startTyping();
+
+    return () => {
+      clearInterval(typingInterval);
+      clearTimeout(resetTimeout);
+    };
+  }, []);
 
   // Cycle the roles
   useEffect(() => {
@@ -105,12 +146,17 @@ const App = () => {
         {
           title: 'Enterprise Java Services',
           desc: 'Scalable backend logic and API development using Spring Boot and microservices architecture.',
-          tech: ['Java', 'Spring Boot', 'SQL']
+          tech: ['Java', 'Spring Boot', 'SQL'],
+          link: githubUrl
         },
         {
-          title: 'Visualization Tooling',
-          desc: 'Custom UI components and rapid prototyping tools using ImGui for internal visualization.',
-          tech: ['C++', 'ImGui', 'OpenGL']
+          title: 'Generating Hexagonal Pattern',
+          desc: 'A procedural graphics project demonstrating efficient rendering and mathematical tiling using ImGui and C++.',
+          tech: ['C++', 'ImGui', 'OpenGL'],
+          link: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
+          git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
+          attentionGrabber: true,
+          videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4" 
         }
       ]
     },
@@ -132,14 +178,18 @@ const App = () => {
       ],
       projects: [
         {
-          title: 'Next.js Professional Suite',
-          desc: 'Scalable web architecture featuring server-side rendering and API integration.',
-          tech: ['Next.js', 'Tailwind', 'REST']
+          title: 'Connect 4 Dots Game',
+          desc: 'A modern, interactive recreation of the classic Connect 4 game with smooth animations and responsive design.',
+          tech: ['HTML5', 'Tailwind', 'JavaScript'],
+          link: "https://connect4dotsgame.netlify.app/",
+          git: "https://github.com/rfcm-git/Connect-4-Game",
+          attentionGrabber: true
         },
         {
           title: 'Python Backend Services',
           desc: 'Robust server-side logic for data-heavy applications using modern frameworks.',
-          tech: ['FastAPI', 'PostgreSQL', 'Docker']
+          tech: ['FastAPI', 'PostgreSQL', 'Docker'],
+          link: githubUrl
         }
       ]
     },
@@ -163,12 +213,14 @@ const App = () => {
         {
           title: 'Automated AI Data Pipeline',
           desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
-          tech: ['n8n', 'OpenAI', 'MySQL']
+          tech: ['n8n', 'OpenAI', 'MySQL'],
+          link: githubUrl
         },
         {
           title: 'BI Performance Dashboard',
           desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
-          tech: ['Power BI', 'Excel', 'VBA']
+          tech: ['Power BI', 'Excel', 'VBA'],
+          link: githubUrl
         }
       ]
     }
@@ -177,6 +229,13 @@ const App = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-blue-500/30">
       <style>{`
+        @keyframes cursor-blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .cursor-blink {
+          animation: cursor-blink 1s infinite;
+        }
         @keyframes bounce-x {
           0%, 100% { transform: translateX(0); }
           50% { transform: translateX(3px); }
@@ -245,6 +304,31 @@ const App = () => {
         }
         .animate-cta {
           animation: subtle-pulse 3s infinite ease-in-out;
+        }
+        @keyframes attention-shake {
+          0%, 100% { transform: translateX(0) rotate(0deg) scale(1.3); }
+          25% { transform: translateX(-3px) rotate(-6deg) scale(1.35); }
+          75% { transform: translateX(3px) rotate(6deg) scale(1.35); }
+        }
+        .attention-github {
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .group:hover .attention-github {
+          animation: attention-shake 0.5s ease-in-out infinite;
+          color: #ffffff !important;
+          filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+        }
+        .icon-glow-blue {
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+        .icon-glow-blue:hover {
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        }
+        .icon-glow-slate {
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+        .icon-glow-slate:hover {
+          box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
         }
       `}</style>
 
@@ -322,9 +406,14 @@ const App = () => {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
           <div className="lg:col-span-7 text-left">
             <div className="mb-2">
-              <span className="text-xl md:text-2xl font-bold tracking-tight text-slate-400 flex items-center gap-2">
-                <span className="text-slate-500 font-medium">Yo! I'm</span> Richard Francis C. <span className="text-blue-500">Malana</span>
-              </span>
+              <div className="text-xl md:text-2xl font-bold tracking-tight text-slate-400 flex items-center gap-2 min-h-[40px]">
+                <span className="text-slate-500 font-medium whitespace-nowrap">Yo! I'm</span> 
+                <div className="flex items-center">
+                  <span className="text-white">{displayName.split(' ').slice(0, 2).join(' ')}</span>
+                  <span className="text-blue-500 ml-2">{displayName.split(' ').slice(2).join(' ')}</span>
+                  <span className={`w-2 h-6 md:h-8 bg-blue-500 ml-1 ${!isTypingComplete ? 'cursor-blink' : 'opacity-0'}`} />
+                </div>
+              </div>
             </div>
             <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-none uppercase">
               <div className="h-[1.1em] overflow-hidden relative">
@@ -349,13 +438,13 @@ const App = () => {
                 <span className="absolute bottom-3 left-8 right-8 h-[2px] bg-slate-950/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
               <div className="flex gap-2">
-                <a href={linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2">
+                <a href={linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
                   <Linkedin size={20} className="text-blue-500" />
                 </a>
-                <a href={facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2">
+                <a href={facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
                   <Facebook size={20} className="text-blue-600" />
                 </a>
-                <a href={githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2">
+                <a href={githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-slate">
                   <Github size={20} />
                 </a>
               </div>
@@ -481,19 +570,45 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.flatMap(s => s.projects.map(p => ({...p, sId: s.id, sBg: s.bg, sColor: s.color}))).map((project, idx) => (
-              <a 
-                href={githubUrl} 
+              <div 
                 key={idx}
-                target="_blank"
-                rel="noreferrer"
-                className="group p-8 bg-slate-950 border border-slate-800 rounded-3xl hover:border-slate-700 transition-all flex flex-col justify-between"
+                className="group p-8 bg-slate-950 border border-slate-800 rounded-3xl hover:border-slate-700 transition-all flex flex-col justify-between relative overflow-visible"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
                     <div className={`p-2 rounded-lg bg-slate-900 ${project.sColor}`}>
                       <Terminal size={18} />
                     </div>
-                    <ExternalLink size={16} className="text-slate-700 group-hover:text-slate-400" />
+                    <div className="flex gap-3">
+                        {project.git && (
+                            <div className="relative group/tooltip">
+                                <a href={project.git} target="_blank" rel="noreferrer" className="block p-1">
+                                    <Github 
+                                      size={18} 
+                                      className={`text-slate-700 transition-all ${project.attentionGrabber ? 'attention-github' : 'hover:text-white hover:scale-110'}`} 
+                                    />
+                                </a>
+                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider rounded-lg opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl shadow-blue-500/20 translate-y-2 group-hover/tooltip:translate-y-0 z-[100]">
+                                    click this to see the source code
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-blue-600" />
+                                </div>
+                            </div>
+                        )}
+                        
+                        {project.title === 'Generating Hexagonal Pattern' ? (
+                          <button 
+                            onClick={() => setActiveVideo(project)}
+                            title="Watch Demo Video"
+                            className="p-1 hover:scale-110 transition-transform text-blue-500 hover:text-blue-400"
+                          >
+                            <Play size={18} fill="currentColor" />
+                          </button>
+                        ) : (
+                          <a href={project.link} target="_blank" rel="noreferrer" title="Visit Live Site" className="p-1">
+                              <ExternalLink size={18} className="text-slate-700 group-hover:text-slate-400 transition-colors" />
+                          </a>
+                        )}
+                    </div>
                   </div>
                   <h4 className="text-lg font-bold mb-2">{project.title}</h4>
                   <p className="text-slate-500 text-xs mb-6 leading-relaxed">
@@ -507,11 +622,43 @@ const App = () => {
                     </span>
                   ))}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Video Modal Player */}
+      {activeVideo && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
+          <div 
+            className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl" 
+            onClick={() => setActiveVideo(null)}
+          />
+          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl animate-in zoom-in-95 duration-500">
+            <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent z-10">
+               <div>
+                 <h3 className="text-sm font-black uppercase tracking-widest text-white">{activeVideo.title}</h3>
+                 <p className="text-[10px] text-slate-400 uppercase tracking-tighter">Project Simulation Demo</p>
+               </div>
+               <button 
+                 onClick={() => setActiveVideo(null)}
+                 className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+               >
+                 <X size={20} />
+               </button>
+            </div>
+            <video 
+              src={activeVideo.videoUrl} 
+              className="w-full h-full object-contain" 
+              autoPlay 
+              muted 
+              loop
+              playsInline
+            />
+          </div>
+        </div>
+      )}
 
       {/* Closing Pitch / Contact Section */}
       <section id="contact-pitch" className="py-32 px-6 scroll-mt-20">
@@ -615,7 +762,7 @@ const App = () => {
           
           <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
              <div className="text-[9px] font-black text-slate-700 uppercase tracking-[0.2em]">
-               &copy; {new Date().getFullYear()} Richard Francis C. Malana. All rights reserved.
+               &copy; {new Date().getFullYear()} Richard Francis Malana. All rights reserved.
              </div>
              <div className="flex gap-6">
                <a href={cvLinks.software} target="_blank" rel="noreferrer" className="text-[9px] font-black text-slate-600 uppercase tracking-widest hover:text-blue-500 transition-colors">Download CV</a>
