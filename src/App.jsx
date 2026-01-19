@@ -156,7 +156,7 @@ const App = () => {
           link: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
           git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
           attentionGrabber: true,
-          videoUrl: "./public/assets/Generating Hexagonal Pattern Sample Video.mp4" 
+          videoUrl: "/assets/Generating-Hexagonal-Pattern-Sample-Video.mp4" 
         }
       ]
     },
