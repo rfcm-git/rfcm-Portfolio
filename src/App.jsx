@@ -33,7 +33,7 @@ const App = () => {
   const [showContactModal, setShowContactModal] = useState(false);
   
   // State for Typewriter Effect
-  const fullName = "Richard Francis Malana";
+  const fullName = "Yo! I'm Richard Francis Malana";
   const [displayName, setDisplayName] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   
@@ -156,7 +156,7 @@ const App = () => {
           link: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
           git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
           attentionGrabber: true,
-          videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4" 
+          videoUrl: "./public/assets/Generating Hexagonal Pattern Sample Video.mp4" 
         }
       ]
     },
@@ -407,10 +407,10 @@ const App = () => {
           <div className="lg:col-span-7 text-left">
             <div className="mb-2">
               <div className="text-xl md:text-2xl font-bold tracking-tight text-slate-400 flex items-center gap-2 min-h-[40px]">
-                <span className="text-slate-500 font-medium whitespace-nowrap">Yo! I'm</span> 
+                <span className="text-slate-500 font-medium whitespace-nowrap"></span> 
                 <div className="flex items-center">
-                  <span className="text-white">{displayName.split(' ').slice(0, 2).join(' ')}</span>
-                  <span className="text-blue-500 ml-2">{displayName.split(' ').slice(2).join(' ')}</span>
+                  <span className="text-blue-500">{displayName.split(' ').slice(0, 2).join(' ')}</span>
+                  <span className="text-white ml-2">{displayName.split(' ').slice(2).join(' ')}</span>
                   <span className={`w-2 h-6 md:h-8 bg-blue-500 ml-1 ${!isTypingComplete ? 'cursor-blink' : 'opacity-0'}`} />
                 </div>
               </div>
