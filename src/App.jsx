@@ -147,9 +147,9 @@ const App = () => {
   const resetNav = () => setMousePos({ x: 0, y: 0 });
 
   const cvLinks = {
-    data: "https://drive.google.com/file/d/1Mlx41J2guEXKWZ3DqaLn5oPneQ3EQnlV/view?usp=sharing",
-    software: "https://drive.google.com/file/d/1yV69-671UaG8mi1C3YN5OC1aLpt5TxbB/view?usp=sharing",
-    web: "https://drive.google.com/file/d/1YoWXPZRnelkddkA3pGTQTZJGvleqlw-j/view?usp=sharing"
+    data: "https://drive.google.com/file/d/1EZQ7QdlzX3sFnWzcXSofUh0uATpDn7d-/view?usp=sharing",
+    software: "https://drive.google.com/file/d/1ZPhaxLyjD1ksoa1WhQlVQ0pBPzdClqHP/view?usp=sharing",
+    web: "https://drive.google.com/file/d/1-Ms7p60_QuFLiy9bBkZlMF8iAuOKWva3/view?usp=sharing"
   };
 
   const services = [
