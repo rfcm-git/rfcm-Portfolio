@@ -1,26 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Globe, 
-  BarChart3, 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ExternalLink, 
+import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
+import {
+  Globe,
+  BarChart3,
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
   Cpu,
   Terminal,
-  CheckCircle2, 
-  ArrowRight, 
+  ArrowRight,
   ChevronRight,
   Zap,
   Facebook,
   Bot,
   Download,
-  X,
-  Send,
-  Sparkles,
-  Workflow,
   Database,
-  Layers,
   Code2,
   Wrench,
   Search,
@@ -28,35 +22,59 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-import {ThreeBackground} from "./Background"
+import { ThreeBackground } from "./Background"
+import { services } from "./data/services";
+import IntroPage from "./components/intro-website";
+
+import { cvLinks, contact } from "./constants/contacts";
+
+import {ContactModal} from "./components/modals/contact-modal";
+import {VideoPlayerModal} from "./components/modals/videoplayer-modal";
+
+import {Footer} from "./components/layouts/footer";
+import { ClosingPitch } from './sections/closing-pitch';
 
 const App = () => {
+
   const [engineerType, setEngineerType] = useState('Software');
   const [specialistType, setSpecialistType] = useState(0);
   const [showContactModal, setShowContactModal] = useState(false);
-  
+
   // New States for Interaction
   const [notification, setNotification] = useState(null);
   const [wiggleProject, setWiggleProject] = useState(null);
 
   // State for Typewriter Effect
-  const fullName = "Yo! I'm Richard Francis Malana";
+  const fullName = "Yo! I'm Richard";
   const [displayName, setDisplayName] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  
+
   // State for Video Player
   const [activeVideo, setActiveVideo] = useState(null);
-  
+
   // Mouse tracking state for the navbar tilt effect
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const navRef = useRef(null);
 
-  const githubUrl = "https://github.com/rfcm-git";
-  const linkedinUrl = "https://linkedin.com/in/richardmalana/";
-  const facebookUrl = "https://www.facebook.com/rf.malana/";
-  const primaryEmail = "drahcir.fran@gmail.com";
-  const secondaryEmail = "richard.malana@outlook.com";
-  const phoneNumbers = ["+63-921-7377-119", "+63-994-9891-334"];
+  const [showMainContent, setShowMainContent] = useState(false);
+
+  // Disable scroll during intro and re-enable after main content is shown
+  useEffect(() => {
+    // Disable scroll during transition
+    document.body.style.overflow = 'hidden';
+
+    // Re-enable scroll after transition (1s = 1000ms)
+    const timer = setTimeout(() => {
+      if (showMainContent) {
+        document.body.style.overflow = ''; // allow scroll after fade-in
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = ''; // cleanup
+    };
+  }, [showMainContent]);
 
   const specialistRoles = [
     { text: "AI Automation Specialist", icon: <Bot size={12} /> },
@@ -69,7 +87,6 @@ const App = () => {
   // List of projects that trigger the "Unavailable" effect
   const unavailableProjects = [
     'E-Commerce Website Template',
-    'Python Backend Services',
     'Automated AI Data Pipeline',
     'BI Performance Dashboard'
   ];
@@ -83,7 +100,7 @@ const App = () => {
 
       // Stop wiggling after a duration
       setTimeout(() => setWiggleProject(null), 300);
-      
+
       // Clear notification after 1.5 seconds
       setTimeout(() => setNotification(null), 1500);
     }
@@ -125,7 +142,7 @@ const App = () => {
     const engineerInterval = setInterval(() => {
       setEngineerType(prev => prev === 'Software' ? 'Computer' : 'Software');
     }, 3000);
-    
+
     const specialistInterval = setInterval(() => {
       setSpecialistType(prev => (prev + 1) % specialistRoles.length);
     }, 2500);
@@ -146,231 +163,13 @@ const App = () => {
 
   const resetNav = () => setMousePos({ x: 0, y: 0 });
 
-  const cvLinks = {
-    data: "https://drive.google.com/file/d/1EZQ7QdlzX3sFnWzcXSofUh0uATpDn7d-/view?usp=sharing",
-    software: "https://drive.google.com/file/d/1ZPhaxLyjD1ksoa1WhQlVQ0pBPzdClqHP/view?usp=sharing",
-    web: "https://drive.google.com/file/d/1-Ms7p60_QuFLiy9bBkZlMF8iAuOKWva3/view?usp=sharing"
-  };
-
-  const services = [
-    {
-      id: 'software',
-      title: 'Software Development',
-      subtitle: 'System & Backend Specialist',
-      color: 'text-blue-500',
-      bg: 'bg-blue-500',
-      cvUrl: cvLinks.software,
-      serviceDesc: 'Developing high-performance applications with expertise in C++ systems, Java backends, and Python automation.',
-      skills: ['C++', 'Java', 'Spring Boot', 'Python', 'OpenCV', 'OOP'],
-      offerings: [
-        'C++ Tooling & Graphics Systems',
-        'Java Spring Boot Backend Services',
-        'OpenCV Image & Video Processing',
-        'System Architecture & Design',
-        'Desktop & Enterprise Applications'
-      ],
-      projects: [
-        {
-          title: 'E-Commerce Website Template',
-          desc: 'A robust and responsive digital storefront featuring dynamic product catalogs and optimized user flows for modern online retail.',
-          tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
-          link: "#",
-          git: "https://github.com/rfcm-git/E-Commerce-Website",
-          attentionGrabber: true
-        },
-        {
-          title: 'Generating Hexagonal Pattern',
-          desc: 'A procedural graphics project demonstrating efficient rendering and mathematical tiling using ImGui and C++.',
-          tech: ['C++', 'ImGui', 'OpenGL'],
-          link: "#",
-          git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
-          attentionGrabber: true,
-          videoUrl: "/assets/Generating-Hexagonal-Pattern-Sample-Video.mp4" 
-        }
-      ]
-    },
-    {
-      id: 'web',
-      title: 'Web Engineering',
-      subtitle: 'Modern Full-Stack Transition',
-      color: 'text-emerald-500',
-      bg: 'bg-emerald-500',
-      cvUrl: cvLinks.web,
-      serviceDesc: 'Transitioning system-level expertise into scalable web ecosystems. Specializing in Python-based backends and React frontends.',
-      skills: ['Next.js', 'ReactJS', 'FastAPI', 'Flask', 'JavaScript', 'Tailwind CSS'],
-      offerings: [
-        'React & Next.js Single Page Apps',
-        'Python (FastAPI/Flask) REST APIs',
-        'Responsive & Mobile-First Design',
-        'Modern State Management',
-        'Full-Stack System Integration'
-      ],
-      projects: [
-        {
-          title: 'Connect 4 Dots Game',
-          desc: 'A modern, interactive recreation of the classic Connect 4 game with smooth animations and responsive design.',
-          tech: ['HTML5', 'Tailwind', 'JavaScript'],
-          link: "https://connect4dotsgame.netlify.app/",
-          git: "https://github.com/rfcm-git/Connect-4-Game",
-          attentionGrabber: true
-        },
-        {
-          title: 'Python Backend Services',
-          desc: 'Robust server-side logic for data-heavy applications using modern frameworks.',
-          tech: ['FastAPI', 'PostgreSQL', 'Docker'],
-          link: "#"
-        }
-      ]
-    },
-    {
-      id: 'data',
-      title: 'Data & AI Automation',
-      subtitle: 'BI, Databases & Workflow AI',
-      color: 'text-purple-500',
-      bg: 'bg-purple-500',
-      cvUrl: cvLinks.data,
-      serviceDesc: 'Leveraging MySQL, Power BI, and automation tools like n8n to transform raw data into actionable business insights.',
-      skills: ['MySQL', 'Power BI', 'Excel/VBA', 'n8n', 'Python', 'OpenAI'],
-      offerings: [
-        'Advanced n8n Workflow Automation',
-        'MySQL & MS Access DB Engineering',
-        'AI Agent & LLM Orchestration',
-        'Power BI Insight Dashboards',
-        'Data Cleaning & ETL Pipelines'
-      ],
-      projects: [
-        {
-          title: 'Automated AI Data Pipeline',
-          desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
-          tech: ['n8n', 'OpenAI', 'MySQL'],
-          link: "#"
-        },
-        {
-          title: 'BI Performance Dashboard',
-          desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
-          tech: ['Power BI', 'Excel', 'VBA'],
-          link: "#"
-        }
-      ]
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-blue-500/30">
-      <style>{`
-        @keyframes cursor-blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        .cursor-blink {
-          animation: cursor-blink 1s infinite;
-        }
-        @keyframes bounce-x {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(3px); }
-        }
-        .animate-bounce-x {
-          animation: bounce-x 1s infinite;
-        }
-        @keyframes gradient-move {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient-move 4s ease infinite;
-        }
-        @keyframes fade-in-out {
-          0% { opacity: 0; }
-          15% { opacity: 1; }
-          85% { opacity: 1; }
-          100% { opacity: 0; }
-        }
-        .animate-fade-in-out {
-          animation: fade-in-out 2.5s ease-in-out infinite;
-        }
-        @keyframes slide-right {
-          0% { transform: translateX(-20px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        .animate-slide-right {
-          animation: slide-right 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-        @keyframes rotate-glow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        .nav-glow-border {
-          position: relative;
-          overflow: hidden;
-          transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
-          perspective: 1000px;
-        }
-        .nav-glow-border::before {
-          content: '';
-          position: absolute;
-          inset: -2px;
-          background: conic-gradient(from 0deg, transparent 0%, transparent 20%, #3b82f6 50%, transparent 80%, transparent 100%);
-          animation: rotate-glow 4s linear infinite;
-          z-index: -1;
-        }
-        @keyframes mesh-drift {
-          0% { background-position: 0% 0%; }
-          100% { background-position: 100% 100%; }
-        }
-        .animate-mesh {
-          background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                            radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
-                            radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                            radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
-          background-size: 200% 200%;
-          animation: mesh-drift 10s ease infinite alternate;
-        }
-        @keyframes subtle-pulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(59, 130, 246, 0); }
-          50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-        }
-        .animate-cta {
-          animation: subtle-pulse 3s infinite ease-in-out;
-        }
-        @keyframes attention-shake {
-          0%, 100% { transform: translateX(0) rotate(0deg) scale(1.3); }
-          25% { transform: translateX(-3px) rotate(-6deg) scale(1.35); }
-          75% { transform: translateX(3px) rotate(6deg) scale(1.35); }
-        }
-        .attention-github {
-          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .group:hover .attention-github {
-          animation: attention-shake 0.5s ease-in-out infinite;
-          color: #ffffff !important;
-          filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-        }
-        @keyframes slow-wiggle {
-          0%, 100% { transform: rotate(0deg); }
-          25% { transform: rotate(-10deg); }
-          50% { transform: rotate(10deg); }
-          75% { transform: rotate(-10deg); }
-        }
-        .animate-slow-wiggle {
-          animation: slow-wiggle 0.2s ease-in-out infinite;
-        }
-        .icon-glow-blue {
-          box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
-        }
-        .icon-glow-blue:hover {
-          box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-        }
-        .icon-glow-slate {
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-        }
-        .icon-glow-slate:hover {
-          box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
-        }
-      `}</style>
+    <div className=" min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-blue-500/30 overflow-auto" >
+      <IntroPage setShowMainContent={setShowMainContent} />
       <ThreeBackground />
-      <div className="relative z-10">
+      <div className={`hide-scrollbar overflow-auto relative z-10 transition-opacity duration-1000 ${showMainContent ? 'opacity-100' : 'opacity-0'
+        }`}>
+
         {/* Persistent Notification System */}
         {notification && (
           <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[300] animate-in slide-in-from-top-4 duration-300">
@@ -381,53 +180,29 @@ const App = () => {
           </div>
         )}
 
-        {/* Hiring Status Bar */}
-        <div className="bg-blue-600/10 border-b border-blue-500/20 py-3 px-6 sticky top-0 z-[60] backdrop-blur-xl">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-[10px] font-bold tracking-[0.2em] text-blue-400 uppercase flex items-center gap-2 overflow-hidden h-4">
-              <div className="flex items-center gap-2 animate-fade-in-out" key={specialistType}>
-                  {specialistRoles[specialistType].icon}
-                  <span>{specialistRoles[specialistType].text}</span>
-              </div>
-              <span className="text-slate-600 mx-1">•</span>
-              <span className="text-white">Remote Ready</span>
-            </div>
-            <div className="flex flex-wrap justify-center gap-3">
-              <span className="text-[9px] font-black uppercase tracking-tighter text-slate-500 self-center mr-1 flex items-center gap-1">
-                Get CV <ChevronRight size={10} className="animate-bounce-x" />
-              </span>
-              <a href={cvLinks.software} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-blue-500 transition-all">
-                <Cpu size={10} className="text-blue-500" /> Software
-              </a>
-              <a href={cvLinks.web} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-emerald-500 transition-all">
-                <Globe size={10} className="text-emerald-500" /> Web
-              </a>
-              <a href={cvLinks.data} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-purple-500 transition-all">
-                <BarChart3 size={10} className="text-purple-500" /> Data
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Floating Header Navigation */}
-        <nav className="fixed left-0 right-0 z-50 flex justify-center mt-6 px-6 pointer-events-none">
-          <div 
+        <nav className="fixed left-0 right-0 z-50  flex justify-center mt-6 px-6 pointer-events-none">
+          <div
             ref={navRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={resetNav}
             style={{
               transform: `rotateY(${mousePos.x}deg) rotateX(${-mousePos.y}deg) translateY(${mousePos.y}px) translateX(${mousePos.x}px)`,
             }}
-            className="pointer-events-auto nav-glow-border p-[1px] rounded-full"
+            className="pointer-events-auto nav-glow-border p-[1px] rounded-full "
           >
             <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
-              <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">
+              <div className=" flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">
+                <div className="w-[130px] h-[30px] flex items-center gap-2 animate-fade-in-out" key={specialistType}>
+                  {specialistRoles[specialistType].icon}
+                  <span>{specialistRoles[specialistType].text}</span>
+                </div>
                 <a href="#services" className="hover:text-blue-400 transition-colors">Expertise</a>
-                <button 
+                <button
                   onClick={() => setShowContactModal(true)}
                   className="text-white hover:text-blue-300 transition-all flex items-center gap-2 relative group/btn"
                 >
-                  <Mail size={12} className="text-blue-500 group-hover/btn:scale-110 transition-transform" /> 
+                  <Mail size={12} className="text-blue-500 group-hover/btn:scale-110 transition-transform" />
                   <span className="relative">
                     Hire Me
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
@@ -436,27 +211,42 @@ const App = () => {
               </div>
               <div className="h-4 w-px bg-white/10" />
               <div className="flex items-center gap-4">
-                <a href={githubUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-all hover:scale-110">
+                <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-all hover:scale-110">
                   <Github size={18} />
                 </a>
-                <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 transition-all hover:scale-110">
+                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 transition-all hover:scale-110">
                   <Linkedin size={18} />
                 </a>
-                <a href={facebookUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-600 transition-all hover:scale-110">
+                <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-600 transition-all hover:scale-110">
                   <Facebook size={18} />
+                </a>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="text-[9px] font-black uppercase tracking-tighter text-slate-500 self-center mr-1 flex items-center gap-1">
+                  Get CV <ChevronRight size={10} className="animate-bounce-x" />
+                </span>
+                <a href={cvLinks.software} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-blue-500 transition-all">
+                  <Cpu size={10} className="text-blue-500" /> Software
+                </a>
+                <a href={cvLinks.web} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-emerald-500 transition-all">
+                  <Globe size={10} className="text-emerald-500" /> Web
+                </a>
+                <a href={cvLinks.data} target="_blank" rel="noreferrer" className="group flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black hover:border-purple-500 transition-all">
+                  <BarChart3 size={10} className="text-purple-500" /> Data
                 </a>
               </div>
             </div>
           </div>
         </nav>
 
+        {/* Hero Section */}
         {/* Hero / Pitch Profile */}
-        <section className="relative pt-32 pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center">
+        < section className="relative pt-32 pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center" >
           <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
             <div className="lg:col-span-7 text-left">
               <div className="mb-2">
-                <div className="text-xl md:text-2xl font-bold tracking-tight text-slate-400 flex items-center gap-2 min-h-[40px]">
-                  <span className="text-slate-500 font-medium whitespace-nowrap"></span> 
+                <div className="text-2xl md:text-4xl font-bold tracking-tight text-slate-400 flex items-center gap-2 min-h-[40px]">
+                  <span className="text-slate-500 font-medium whitespace-nowrap"></span>
                   <div className="flex items-center">
                     <span className="text-blue-500">{displayName.split(' ').slice(0, 2).join(' ')}</span>
                     <span className="text-white ml-2">{displayName.split(' ').slice(2).join(' ')}</span>
@@ -464,21 +254,26 @@ const App = () => {
                   </div>
                 </div>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-none uppercase">
-                <div className="h-[1.1em] overflow-hidden relative">
-                  <span key={engineerType} className="block animate-slide-right">
+              <h1 className="flex items-center text-5xl md:text-2xl font-black tracking-tighter mb-6 leading-none uppercase">
+
+                <span className="h-[1.1em] overflow-hidden relative flex items-center">
+                  <span key={engineerType} className="block animate-slide-right leading-none">
                     {engineerType}
                   </span>
-                </div>
-                <span className="animate-gradient text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-400 to-blue-600 font-black">Engineer</span>
+                </span>
+
+                <span className="ml-2 animate-gradient text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-400 to-blue-600 font-black leading-none">
+                  Engineer
+                </span>
+
               </h1>
-              
+
               <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-6">
                 "Building the bridge between <span className="text-white">High-Performance System Logic</span> and <span className="text-white">Actionable Data Intelligence</span>. I turn raw information into automated business growth."
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={() => setShowContactModal(true)}
                   className="group relative px-8 py-4 bg-white text-slate-950 rounded-xl font-black hover:scale-[1.02] transition-all flex items-center gap-2 animate-cta overflow-hidden"
                 >
@@ -487,69 +282,30 @@ const App = () => {
                   <span className="absolute bottom-3 left-8 right-8 h-[2px] bg-slate-950/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </button>
                 <div className="flex gap-2">
-                  <a href={linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
+                  <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
                     <Linkedin size={20} className="text-blue-500" />
                   </a>
-                  <a href={facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
+                  <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
                     <Facebook size={20} className="text-blue-600" />
                   </a>
-                  <a href={githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-slate">
+                  <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-slate">
                     <Github size={20} />
                   </a>
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-5">
-              <div className="bg-slate-900/50 border border-slate-800 rounded-[2rem] p-8 backdrop-blur-sm">
-                <h3 className="text-xs font-black tracking-[0.2em] text-slate-500 uppercase mb-6 flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-blue-500" /> Why Hire Me?
-                </h3>
-                <div className="space-y-6">
-                  <div className="group">
-                    <h4 className="font-bold text-slate-200 flex items-center gap-2 uppercase text-xs">
-                      <Code2 size={14} className="text-blue-400" /> Software Engineer in C++
-                    </h4>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                      Strong foundation in low-level systems and high-performance computation. Experienced in **C++ tooling**, graphics visualization with **ImGui/OpenGL**, and image processing using **OpenCV**.
-                    </p>
-                  </div>
-                  <div className="group">
-                    <h4 className="font-bold text-slate-200 flex items-center gap-2 uppercase text-xs">
-                      <Layers size={14} className="text-emerald-500" /> Full Stack Web Developer
-                    </h4>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                      Expertise in building scalable web ecosystems using **Next.js**, **React**, and **Python (FastAPI/Flask)**. I bridge the gap between complex backend logic and intuitive user interfaces.
-                    </p>
-                  </div>
-                  <div className="group">
-                    <h4 className="font-bold text-slate-200 flex items-center gap-2 uppercase text-xs">
-                      <Database size={14} className="text-purple-500" /> Data Analytics Expert
-                    </h4>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                      Mastery of the modern data stack: **MySQL**, **Power BI**, and **n8n**. I don't just report numbers; I architect pipelines that transform messy data into strategic assets.
-                    </p>
-                  </div>
-                  <div className="group">
-                    <h4 className="font-bold text-slate-200 flex items-center gap-2 uppercase text-xs">
-                      <Bot size={14} className="text-blue-500" /> Workflow AI Specialist
-                    </h4>
-                    <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                      Pioneer in **AI Automation** and **Vibe Coding**. I build "Self-Driving" business logic using LLMs and low-code orchestrators to eliminate operational friction.
-                    </p>
-                  </div>
-                  <div className="pt-4 flex flex-wrap gap-4 text-xs font-bold text-slate-400">
-                    <span className="flex items-center gap-1"><Sparkles size={12} className="text-blue-400" /> Vibe Coding</span>
-                    <span className="flex items-center gap-1"><Zap size={12} className="text-yellow-500" /> Fast Learner</span>
-                    <span className="flex items-center gap-1"><Workflow size={12} className="text-purple-400" /> n8n Power User</span>
-                  </div>
-                </div>
-              </div>
+            <div className="lg:col-span-4 relative z-10">
+              <img
+                src="/assets/hero_image.png"
+                alt="Hero Image"
+                className="w-full h-auto rounded-3xl 
+                        [filter:drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
+                        hover:scale-105 transition-transform"
+              />
             </div>
           </div>
-          
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full -z-10" />
-        </section>
+        </section >
 
         {/* Skills / Services Section */}
         <section id="services" className="py-24 px-6 border-t border-slate-900">
@@ -568,16 +324,16 @@ const App = () => {
                       {service.id === 'web' && <Globe size={28} />}
                       {service.id === 'data' && <Database size={28} />}
                     </div>
-                    <a 
-                      href={service.cvUrl} 
-                      target="_blank" 
-                      rel="noreferrer" 
+                    <a
+                      href={service.cvUrl}
+                      target="_blank"
+                      rel="noreferrer"
                       className="flex items-center gap-2 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white hover:border-slate-600 hover:scale-105 transition-all"
                     >
                       <Download size={12} className="animate-bounce" /> CV
                     </a>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
                     {service.serviceDesc}
@@ -612,14 +368,14 @@ const App = () => {
                 <h2 className="text-xs font-black tracking-[0.3em] text-blue-500 uppercase mb-4">Project Gallery</h2>
                 <p className="text-3xl md:text-4xl font-bold tracking-tight">Recent Work & Contributions</p>
               </div>
-              <a href={githubUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-white transition-colors">
+              <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-white transition-colors">
                 Explore Codebase <ArrowRight size={16} />
               </a>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.flatMap(s => s.projects.map(p => ({...p, sId: s.id, sBg: s.bg, sColor: s.color}))).map((project, idx) => (
-                <div 
+              {services.flatMap(s => s.projects.map(p => ({ ...p, sId: s.id, sBg: s.bg, sColor: s.color }))).map((project, idx) => (
+                <div
                   key={idx}
                   className="group p-8 bg-slate-950 border border-slate-800 rounded-3xl hover:border-slate-700 transition-all flex flex-col justify-between relative overflow-visible"
                 >
@@ -629,41 +385,41 @@ const App = () => {
                         <Terminal size={18} />
                       </div>
                       <div className="flex gap-3">
-                          {project.git && (
-                              <div className="relative group/tooltip">
-                                  <a href={project.git} target="_blank" rel="noreferrer" className="block p-1">
-                                      <Github 
-                                        size={18} 
-                                        className={`text-slate-700 transition-all ${project.attentionGrabber ? 'attention-github' : 'hover:text-white hover:scale-110'}`} 
-                                      />
-                                  </a>
-                                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider rounded-lg opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl shadow-blue-500/20 translate-y-2 group-hover/tooltip:translate-y-0 z-[100]">
-                                      click this to see the source code
-                                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-blue-600" />
-                                  </div>
-                              </div>
-                          )}
-                          
-                          {project.title === 'Generating Hexagonal Pattern' ? (
-                            <button 
-                              onClick={() => setActiveVideo(project)}
-                              title="Watch Demo Video"
-                              className="p-1 hover:scale-110 transition-transform text-blue-500 hover:text-blue-400"
-                            >
-                              <Play size={18} fill="currentColor" />
-                            </button>
-                          ) : (
-                            <a 
-                              href={project.link} 
-                              onClick={(e) => handleProjectClick(e, project.title)}
-                              target="_blank" 
-                              rel="noreferrer" 
-                              title="Visit Live Site" 
-                              className={`p-1 transition-all ${wiggleProject === project.title ? 'animate-slow-wiggle text-red-500' : 'text-slate-700 hover:text-white'}`}
-                            >
-                                <ExternalLink size={18} />
+                        {project.git && (
+                          <div className="relative group/tooltip">
+                            <a href={project.git} target="_blank" rel="noreferrer" className="block p-1">
+                              <Github
+                                size={18}
+                                className={`text-slate-700 transition-all ${project.attentionGrabber ? 'attention-github' : 'hover:text-white hover:scale-110'}`}
+                              />
                             </a>
-                          )}
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider rounded-lg opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl shadow-blue-500/20 translate-y-2 group-hover/tooltip:translate-y-0 z-[100]">
+                              click this to see the source code
+                              <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-blue-600" />
+                            </div>
+                          </div>
+                        )}
+
+                        {project.title === 'Generating Hexagonal Pattern' ? (
+                          <button
+                            onClick={() => setActiveVideo(project)}
+                            title="Watch Demo Video"
+                            className="p-1 hover:scale-110 transition-transform text-blue-500 hover:text-blue-400"
+                          >
+                            <Play size={18} fill="currentColor" />
+                          </button>
+                        ) : (
+                          <a
+                            href={project.link}
+                            onClick={(e) => handleProjectClick(e, project.title)}
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Visit Live Site"
+                            className={`p-1 transition-all ${wiggleProject === project.title ? 'animate-slow-wiggle text-red-500' : 'text-slate-700 hover:text-white'}`}
+                          >
+                            <ExternalLink size={18} />
+                          </a>
+                        )}
                       </div>
                     </div>
                     <h4 className="text-lg font-bold mb-2">{project.title}</h4>
@@ -686,207 +442,19 @@ const App = () => {
 
         {/* Video Modal Player */}
         {activeVideo && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
-            <div 
-              className="absolute inset-0 bg-slate-950/90 backdrop-blur-x5" 
-              onClick={() => setActiveVideo(null)}
-            />
-            <div className="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl animate-in zoom-in-95 duration-500">
-              <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent z-10">
-                <div>
-                  <h3 className="text-sm font-black uppercase tracking-widest text-white">{activeVideo.title}</h3>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-tighter">Project Simulation Demo</p>
-                </div>
-                <button 
-                  onClick={() => setActiveVideo(null)}
-                  className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-              <video 
-                src={activeVideo.videoUrl} 
-                className="w-full h-full object-contain" 
-                autoPlay 
-                muted 
-                loop
-                playsInline
-              />
-            </div>
-          </div>
+          <VideoPlayerModal activeVideo={activeVideo} setActiveVideo={setActiveVideo}/>
         )}
 
-        {/* Closing Pitch / Contact Section */}
-        <section id="contact-pitch" className="py-32 px-6 scroll-mt-20">
-          <div className="max-w-4xl mx-auto relative group">
-            <div className="absolute -inset-[2px] rounded-[3.1rem] bg-gradient-to-r from-blue-600 via-purple-500 to-emerald-400 animate-gradient opacity-40 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
-            
-            <div className="relative text-center bg-slate-950 border border-white/10 rounded-[3rem] p-12 md:p-20 overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 animate-mesh pointer-events-none" />
-              
-              <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">New Chapter</span>
-                </div>
-                
-                <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight">
-                  Let's solve <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">technical problems</span>.
-                </h2>
-                
-                <p className="text-slate-400 text-lg mb-12 max-w-xl mx-auto leading-relaxed italic">
-                  I am ready to bring my multi-disciplinary engineering background to your team.
-                </p>
-                
-                <div className="flex flex-col items-center gap-10">
-                  <button 
-                    onClick={() => setShowContactModal(true)}
-                    className="px-12 py-5 bg-blue-600 text-white rounded-2xl font-black hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/20 flex items-center gap-3 group/cta animate-cta"
-                  >
-                    <Mail size={22} className="group-hover/cta:scale-110 transition-transform" /> 
-                    CONTACT ME DIRECTLY
-                  </button>
+        <ClosingPitch setShowContactModal={setShowContactModal}/>
 
-                  <div className="grid md:grid-cols-2 gap-8 w-full max-w-xl border-t border-white/10 pt-10">
-                    <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Email Contacts</p>
-                      <div className="flex flex-col gap-1">
-                        <a href={`mailto:${primaryEmail}`} className="text-sm font-bold text-slate-200 hover:text-blue-400 transition-colors">
-                          {primaryEmail}
-                        </a>
-                        <a href={`mailto:${secondaryEmail}`} className="text-sm font-bold text-slate-400 hover:text-blue-400 transition-colors">
-                          {secondaryEmail}
-                        </a>
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-2 items-center md:items-end text-center md:text-right">
-                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Mobile Contacts</p>
-                      <div className="flex flex-col gap-1">
-                        {phoneNumbers.map(num => (
-                          <span key={num} className="text-sm font-bold text-slate-200">
-                            {num}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-20 border-t border-slate-900 px-6 bg-slate-950">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div className="text-center md:text-left">
-                <p className="text-slate-600 text-[10px] tracking-[0.2em] font-black uppercase mb-4">
-                  Engineering Portfolio &bull; Software Engineer &bull; Remote Available
-                </p>
-                <h4 className="text-xl font-black uppercase tracking-tight text-white mb-6">
-                  Connect with me
-                </h4>
-                <div className="flex flex-wrap justify-center md:justify-start gap-4 text-slate-500">
-                  <a href={linkedinUrl} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-blue-500 hover:border-blue-500/50 transition-all">
-                    <Linkedin size={20} />
-                  </a>
-                  <a href={githubUrl} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-white/50 transition-all">
-                    <Github size={20} />
-                  </a>
-                  <a href={facebookUrl} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-blue-600 hover:border-blue-600/50 transition-all">
-                    <Facebook size={20} />
-                  </a>
-                  <button 
-                    onClick={() => setShowContactModal(true)}
-                    className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-blue-400 hover:border-blue-400/50 transition-all"
-                  >
-                    <Mail size={20} />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center md:items-end gap-6 opacity-60">
-                <div className="text-center md:text-right">
-                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Portfolio Mirror</p>
-                  <span className="text-sm font-bold text-slate-500">
-                    rfcm-portfolio.dev
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-[9px] font-black text-slate-700 uppercase tracking-[0.2em]">
-                &copy; {new Date().getFullYear()} Richard Francis Malana. All rights reserved.
-              </div>
-              <div className="flex gap-6">
-                <a href={cvLinks.software} target="_blank" rel="noreferrer" className="text-[9px] font-black text-slate-600 uppercase tracking-widest hover:text-blue-500 transition-colors">Download CV</a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Popup Contact Form Modal */}
-        {showContactModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-x3 animate-in fade-in duration-300">
-            <div className="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-              <div className="bg-slate-800/50 p-8 border-b border-slate-700 flex justify-between items-center">
-                <div>
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-white">Get in Touch</h3>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Direct Line to Richard</p>
-                </div>
-                <button 
-                  onClick={() => setShowContactModal(false)}
-                  className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-400 hover:text-white"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              <form className="p-8 space-y-6" onSubmit={(e) => { e.preventDefault(); setShowContactModal(false); }}>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Your Name</label>
-                    <input type="text" placeholder="John Doe" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none transition-colors" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
-                    <input type="email" placeholder="john@example.com" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none transition-colors" required />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Subject</label>
-                  <select className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none transition-colors appearance-none text-slate-300">
-                    <option>Software Project Inquiry</option>
-                    <option>Web Development Request</option>
-                    <option>Data Analytics / Automation</option>
-                    <option>Hiring / Full-time Role</option>
-                    <option>Just saying hello!</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Message</label>
-                  <textarea rows="4" placeholder="How can I help you today?" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none transition-colors resize-none" required></textarea>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-between pt-4">
-                  <div className="flex flex-col gap-1 items-center md:items-start opacity-50">
-                    <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-1">
-                      <CheckCircle2 size={10} /> Fast Response Guaranteed
-                    </span>
-                  </div>
-                  <button className="w-full md:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-xl transition-all flex items-center justify-center gap-2 group">
-                    Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
+          {showContactModal && (
+            <ContactModal setShowContactModal={setShowContactModal} />
+          )}
       </div>
+
     </div>
   );
 };

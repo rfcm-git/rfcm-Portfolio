@@ -6,14 +6,11 @@ export const ThreeBackground = () => {
   const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const scene = new THREE.Scene();
+    const scene  = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     
-    const { clientWidth, clientHeight } = containerRef.current;
-    renderer.setSize(clientWidth, clientHeight);
-    camera.aspect = clientWidth / clientHeight;
-    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
@@ -25,7 +22,7 @@ export const ThreeBackground = () => {
     scene.add(group);
 
     const items = [];
-    const itemCount = 180; // Increased count for a fuller "background only" look
+    const itemCount = 300 + Math.floor(Math.random() * 100); // Increased count for a fuller "background only" look
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/[]{}*&$#@!".split("");
 
     const createTextTexture = (char) => {
@@ -140,42 +137,23 @@ export const ThreeBackground = () => {
     };
 
     const handleResize = () => {
-      if (!containerRef.current) return;
-
-      const { clientWidth, clientHeight } = containerRef.current;
-      camera.aspect = clientWidth / clientHeight;
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(clientWidth, clientHeight);
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
-
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
     animate();
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
-
-      items.forEach(item => {
-        item.geometry?.dispose();
-        if (Array.isArray(item.material)) {
-          item.material.forEach(mat => mat.dispose());
-        } else {
-          item.material?.dispose();
-        }
-      });
-
-      renderer.dispose();
-
       if (containerRef.current) {
         containerRef.current.removeChild(renderer.domElement);
       }
     };
   }, []);
 
-  return <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none bg-[#020617]" />;
+  return <div ref={containerRef} className="fixed inset-0 z-0 bg-[#020617]" />;
 };
-
-
-export default ThreeBackground;
