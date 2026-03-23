@@ -2,7 +2,7 @@
 export const contact = {
   githubUrl: "https://github.com/rfcm-git",
   linkedinUrl: "https://linkedin.com/in/richardmalana/",
-  facebookUrl: "https://www.facebook.com/rf.malana/",
+  facebookUrl: "https://www.facebook.com/techdevrichard/",
   emails: {
     primary: "drahcir.fran@gmail.com",
     secondary: "richard.malana@outlook.com"
