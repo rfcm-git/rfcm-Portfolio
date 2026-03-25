@@ -3,9 +3,26 @@ import { Github, Linkedin, Facebook, Download } from 'lucide-react';
 import { contact, cvLinks } from '../constants/contacts';
 
 export const HeroSection = ({ setShowContactModal }) => {
-  const title = "Full-Stack Developer";
+  const title = "Technical Virtual Assistant";
   const [displayName, setDisplayName] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [engineerType, setEngineerType] = useState('Full-Stack');
+
+  // Cycle the roles
+  useEffect(() => {
+    const engineerInterval = setInterval(() => {
+      setEngineerType(prev => prev === 'Full-Stack' ? 'BACKEND' : 'Full-Stack');
+    }, 3000);
+
+    const specialistInterval = setInterval(() => {
+      setSpecialistType(prev => (prev + 1) % specialistRoles.length);
+    }, 2500);
+
+    return () => {
+      clearInterval(engineerInterval);
+      clearInterval(specialistInterval);
+    };
+  }, []);
 
   useEffect(() => {
     let index = 0;
@@ -40,27 +57,38 @@ export const HeroSection = ({ setShowContactModal }) => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative pt-20 pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center">
+      <section id="hero" className="relative py-20 pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
           <div className="lg:col-span-8 text-left">
+
+            <h1 className="flex items-center text-5xl md:text-24xl font-black tracking-normal mb-2 leading-none uppercase">
+              <span className="h-[1.1em] overflow-hidden relative flex items-center">
+                <span key={engineerType} className="block animate-slide-right leading-none">
+                  {engineerType}
+                </span>
+              </span>
+              <span className="ml-2 animate-gradient text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-400 to-blue-600 font-black leading-none">
+                Developer
+              </span>
+            </h1>
+
             <div className="mb-2">
-              <div className="text-2xl md:text-6xl font-bold tracking-wide text-slate-400 flex items-center gap-1 min-h-[60px] min-w-[350px]">
+              <div className="text-5xl md:text-2xl font-bold tracking-wide text-slate-400 flex items-center gap-1 min-h-[20px] min-w-[350px]">
                 <span className="text-slate-500 font-medium whitespace-nowrap"></span>
                 <div className="flex items-center">
                   <span className="text-blue-500">{displayName}</span>
-                  <span className={`w-1 h-8 md:h-12 bg-blue-500 ml-1 ${!isTypingComplete ? 'cursor-blink' : 'opacity-0'}`} />
+                  <span className={`w-1 h-8 md:h-5 bg-blue-500 ml-1 ${!isTypingComplete ? 'cursor-blink' : 'opacity-0'}`} />
                 </div>
               </div>
             </div>
 
             <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-6">
-              I build end-to-end web applications as a Full-Stack Developer, combining
-              <span className="text-white"> FastAPI, Python, and PostgreSQL/SQLite</span> on the backend with 
-              <span className="text-white"> React and JavaScript</span> on the frontend for seamless experiences.
+              I build scalable <span className="text-white">web applications </span>
+               and help businesses with <span className="text-white">data analysis, automation, and technical support</span>.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={ cvLinks.web ? () => window.open(cvLinks.web, '_blank') : null }
+                onClick={cvLinks.web ? () => window.open(cvLinks.web, '_blank') : null}
                 disabled={!cvLinks.web}
                 title="Get CV"
                 className="group relative px-8 py-4 bg-white text-slate-950 rounded-xl font-black hover:scale-[1.02] transition-all flex items-center gap-2 animate-cta overflow-hidden"
@@ -87,8 +115,8 @@ export const HeroSection = ({ setShowContactModal }) => {
               src="/assets/hero_image.png"
               alt="Hero Image"
               className="w-full h-auto rounded-3xl 
-                              [filter:drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
-                              hover:scale-105 transition-transform"
+                        [filter:drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
+                        hover:scale-105 transition-transform"
             />
           </div>
         </div>

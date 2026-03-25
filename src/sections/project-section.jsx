@@ -5,7 +5,7 @@ import { services } from "../data/services";
 const ProjectSection = () => {
   return (
     <>
-      <section id="projects" className="py-10 px-24 bg-slate-900/20">
+      <section id="projects" className="py-20 px-6 bg-slate-900/20">
         <div className="flex flex-col items-center text-center gap-6 mb-16">
           <div className="flex items-center gap-3">
             <div className="h-px w-8 bg-slate-800"></div>

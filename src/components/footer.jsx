@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
 import { Linkedin, Github, Facebook, Mail } from 'lucide-react';
 import { contact, cvLinks } from '../constants/contacts';
 
-export const Footer = ({ setShowContactModal }) => {
+export const Footer = () => {
   return (
     <>
-      {/* Footer */}
-      <footer className="py-20 border-t border-slate-900 px-6 bg-slate-950">
+      <footer className="py-20 px-6 border-t border-slate-900 bg-slate-950">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="text-center md:text-left mt-0">
@@ -37,7 +35,7 @@ export const Footer = ({ setShowContactModal }) => {
                   <span className="text-sm font-bold text-slate-200"> {contact.phones.secondary} </span>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 items-center mr-2 md:items-end text-center md:text-left">
+              <div className="flex flex-col gap-2 items-center md:items-end text-center md:text-left">
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Email Contacts</p>
                 <div className="flex flex-col gap-1 md:items-end">
                   <a href={`mailto:${contact.emails.primary}`} className="text-sm font-bold text-slate-200 hover:text-blue-400 transition-colors">
@@ -54,7 +52,7 @@ export const Footer = ({ setShowContactModal }) => {
 
           <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-[9px] font-black text-slate-700 uppercase tracking-[0.2em]">
-              &copy; {new Date().getFullYear()} Richard Francis Malana. All rights reserved.
+              &copy; {new Date().getFullYear()} © 2026 TechDevRichard| Built with React & Tailwind
             </div>
             <div className="flex gap-6">
               <a href={cvLinks.software} target="_blank" rel="noreferrer" className="text-[9px] font-black text-slate-600 uppercase tracking-widest hover:text-blue-500 transition-colors">Download CV</a>
@@ -62,8 +60,6 @@ export const Footer = ({ setShowContactModal }) => {
           </div>
         </div>
       </footer>
-
     </>
-
   );
 };

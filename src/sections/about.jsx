@@ -13,9 +13,7 @@ const About = () => {
   const mainService = services[1]; // Full-Stack / Backend focus
   return (
     <>
-      {/* --- HERO / ABOUT SECTION --- */}
-      <section className="p-44 max-w-8xl flex flex-row gap-10 justify-center items-center" id="about">
-          {/* Left: Image/Visual Side */}
+      <section className="py-20 px-6 max-w-8xl flex flex-row gap-10 justify-center items-center" id="about">
           <div className="relative aspect-square w-[50%] h-auto ml-8 mr-8 rounded-3xl overflow-hidden bg-slate-950 border border-slate-800">
             <img
               src="/assets/about-image.jpg"
