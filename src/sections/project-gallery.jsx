@@ -36,7 +36,7 @@ export const ProjectGallery = ({setNotification}) => {
     <>
 
       {/* Project Gallery */}
-      <section className="py-24 px-6 bg-slate-900/20">
+      <section id="projects" className="py-24 px-6 bg-slate-900/20">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>

@@ -26,7 +26,7 @@ const IntroPage = ({setShowMainContent}) => {
             TechDevRichard
           </h1>
           <p className="text-sky-400 text-sm md:text-xl uppercase tracking-[0.4em] font-medium">
-            Computer Engineer
+            Software Engineer
           </p>
         </div>
       </div>

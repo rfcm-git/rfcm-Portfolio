@@ -9,7 +9,7 @@ export const services = [
     bg: 'bg-blue-500',
     cvUrl: cvLinks.software,
     serviceDesc: 'Developing high-performance applications with expertise in C++ systems, Java backends, and Python automation.',
-    skills: ['C++', 'Java', 'Spring Boot', 'Python', 'OpenCV', 'OOP'],
+    skills: ['C++', 'Java', 'Spring OpenGL', 'Python', 'OpenCV', 'OOP'],
     offerings: [
       'C++ Tooling & Graphics Systems',
       'Java Spring Boot Backend Services',
@@ -39,19 +39,28 @@ export const services = [
   },
   {
     id: 'web',
-    title: 'Web Engineering',
-    subtitle: 'Modern Full-Stack Transition',
+    title: 'Full-Stack Development',
+    subtitle: 'Backend-Focused | Scalable API & System Design',
     color: 'text-emerald-500',
     bg: 'bg-emerald-500',
     cvUrl: cvLinks.web,
-    serviceDesc: 'Transitioning system-level expertise into scalable web ecosystems. Specializing in Python-based backends and React frontends.',
-    skills: ['Next.js', 'ReactJS', 'FastAPI', 'Flask', 'JavaScript', 'Tailwind CSS'],
+    serviceDesc: 'Designing and building scalable, API-driven systems with Python, focusing on clean architecture, performance, and reliability—paired with modern React-based frontend integration.',
+    skills: [
+      'FastAPI', 'Flask', 'Python',
+      'PostgreSQL', 'SQLite',
+      'Pydantic', 'JWT', 'OAuth2',
+      'Redis', 'Docker',
+      'React', 'Next.js', 'JavaScript', 'Tailwind CSS'
+    ],
     offerings: [
-      'React & Next.js Single Page Apps',
-      'Python (FastAPI/Flask) REST APIs',
-      'Responsive & Mobile-First Design',
-      'Modern State Management',
-      'Full-Stack System Integration'
+      'High-Performance REST APIs with FastAPI',
+      'Data Validation & Serialization (Pydantic)',
+      'Authentication Systems (JWT, OAuth2)',
+      'Asynchronous Processing & Background Tasks',
+      'Caching & Performance Optimization (Redis)',
+      'Database Design, Indexing & Query Optimization',
+      'Containerization & Deployment with Docker',
+      'Scalable Backend Architecture & System Design'
     ],
     projects: [
       {
@@ -60,15 +69,15 @@ export const services = [
         tech: ['HTML5', 'Tailwind', 'JavaScript'],
         link: "https://connect4dotsgame.netlify.app/",
         git: "https://github.com/rfcm-git/Connect-4-Game",
-        attentionGrabber: true
+        imageUrl: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=1000&auto=format&fit=crop"
       },
       {
         title: 'Blog Web App Built with FastAPI',
         desc: 'A blog web application built with FastAPI, featuring server-side rendering, API-driven content management, and modern backend architecture.',
-        tech: ['FastAPI', 'PostgreSQL/SQLite', 'Python', 'SQLAlchemy', 'JWT', 'OAuth2', 'Jinja2', 'HTML5', 'Tailwind', 'JavaScript', 'Bootstrap', 'lucide-react', 'Pydantic'],
+        tech: ['FastAPI', 'PostgreSQL', 'Python', 'SQLAlchemy', 'JWT', 'Pydantic'],
         link: "https://fastapi-blog-website-gorb.onrender.com",
         git: "https://github.com/rfcm-git/FastAPI-blog-website",
-        attentionGrabber: true
+        imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop"
       }
     ]
   },

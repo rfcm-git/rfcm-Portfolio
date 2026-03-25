@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import { Linkedin, Github, Facebook, Mail } from 'lucide-react';
 import { contact, cvLinks } from '../constants/contacts';
 
-export const Footer = ({setShowContactModal}) => {
+export const Footer = ({ setShowContactModal }) => {
   return (
     <>
       {/* Footer */}
       <footer className="py-20 border-t border-slate-900 px-6 bg-slate-950">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div className="text-center md:text-left">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div className="text-center md:text-left mt-0">
               <p className="text-slate-600 text-[10px] tracking-[0.2em] font-black uppercase mb-4">
-                Engineering Portfolio &bull; Software Engineer &bull; Remote Available
+                Full-Stack Developer &bull; Software Engineer &bull; Remote Available
               </p>
               <h4 className="text-xl font-black uppercase tracking-tight text-white mb-6">
                 Connect with me
@@ -29,13 +29,26 @@ export const Footer = ({setShowContactModal}) => {
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-end gap-6 opacity-60">
-              <div className="text-center md:text-right">
-                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Portfolio Mirror</p>
-                <span className="text-sm font-bold text-slate-500">
-                  rfcm-portfolio.dev
-                </span>
+            <div className="flex flex-col items-center md:items-end gap-4 opacity-60">
+              <div className="flex flex-col gap-2 items-center md:items-end text-center md:text-left">
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Mobile Contacts</p>
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm font-bold text-slate-200"> {contact.phones.primary} </span>
+                  <span className="text-sm font-bold text-slate-200"> {contact.phones.secondary} </span>
+                </div>
               </div>
+              <div className="flex flex-col gap-2 items-center mr-2 md:items-end text-center md:text-left">
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Email Contacts</p>
+                <div className="flex flex-col gap-1 md:items-end">
+                  <a href={`mailto:${contact.emails.primary}`} className="text-sm font-bold text-slate-200 hover:text-blue-400 transition-colors">
+                    {contact.emails.primary}
+                  </a>
+                  <a href={`mailto:${contact.emails.secondary}`} className="text-sm font-bold text-slate-400 hover:text-blue-400 transition-colors">
+                    {contact.emails.secondary}
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
 

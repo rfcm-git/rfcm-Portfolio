@@ -5,7 +5,7 @@ export const ClosingPitch = ({setShowContactModal}) => {
   return (
     <>
       {/* Closing Pitch / Contact Section */}
-      <section id="contact-pitch" className="py-32 px-6 scroll-mt-20">
+      <section id="closing-pitch" className="py-32 px-6 scroll-mt-20">
         <div className="max-w-4xl mx-auto relative group">
           <div className="absolute -inset-[2px] rounded-[3.1rem] bg-gradient-to-r from-blue-600 via-purple-500 to-emerald-400 animate-gradient opacity-40 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
 

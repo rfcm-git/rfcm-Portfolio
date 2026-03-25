@@ -2,6 +2,8 @@ import { Cpu, Database, Globe, Download, Zap } from "lucide-react";
 import { services } from "../data/services";
 
 export const Skills = () => {
+
+
   return (
     <>
       {/* Skills / Services Section */}
@@ -15,23 +17,14 @@ export const Skills = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {services.map((service) => (
               <div key={service.id} className="group flex flex-col p-8 bg-slate-900/30 border border-slate-800 rounded-[2.5rem] hover:border-slate-600 transition-all">
-                <div className="flex justify-between items-start mb-8">
+                <div className="flex justify-between items-start mb-8 gap-3">
                   <div className={`w-14 h-14 rounded-2xl ${service.bg} bg-opacity-10 flex items-center justify-center ${service.color}`}>
                     {service.id === 'software' && <Cpu size={28} />}
                     {service.id === 'web' && <Globe size={28} />}
                     {service.id === 'data' && <Database size={28} />}
                   </div>
-                  <a
-                    href={service.cvUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white hover:border-slate-600 hover:scale-105 transition-all"
-                  >
-                    <Download size={12} className="animate-bounce" /> CV
-                  </a>
+                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                 </div>
-
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
                   {service.serviceDesc}
                 </p>

@@ -10,10 +10,11 @@ import { Navbar } from "./components/navbar";
 
 import { ContactModal } from "./components/modals/contact-modal";
 
-import { Footer } from "./components/footer";
-import { ClosingPitch } from './sections/closing-pitch';
 import { Skills } from './sections/skills';
 import { ProjectGallery } from './sections/project-gallery';
+import ProjectSection from './sections/project-section';
+import { Footer } from "./components/footer";
+import About from './sections/about';
 
 const App = () => {
   // State for Contact Modal
@@ -44,12 +45,12 @@ const App = () => {
           <Navbar setShowContactModal={setShowContactModal} />
 
           <HeroSection setShowContactModal={setShowContactModal} />
+          <About />
+          {/*  Skills /> */}
+          {/* <ProjectGallery setNotification={setNotification} /> */}
+          <ProjectSection />
 
-          <Skills />
 
-          <ProjectGallery setNotification={setNotification} />
-
-          <ClosingPitch setShowContactModal={setShowContactModal} />
 
           <Footer />
         </div>
