@@ -31,8 +31,8 @@ export const Navbar = ({ setShowContactModal }) => {
           }}
           className="pointer-events-auto nav-glow-border p-[1px] rounded-full w-[20]"
         >
-          <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
-            <div className=" flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">
+          <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-16 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
+            <div className=" flex items-center gap-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
               <div className="flex gap-1 flex-row items-center hover:text-white transition-colors text-blue-500">
                 <Bot size={14} />
                 <a href="#hero">TechDevRichard</a>
@@ -43,10 +43,8 @@ export const Navbar = ({ setShowContactModal }) => {
               </div>
 
               <div>
-                <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
+                <a href="#about" className="hover:text-blue-400 transition-colors ">About</a>
               </div>
-
-              <a href="#services" className="hover:text-blue-400 transition-colors">Expertise</a>
               <button
                 onClick={() => setShowContactModal(true)}
                 className="text-white hover:text-blue-300 transition-all flex items-center gap-2 relative group/btn"

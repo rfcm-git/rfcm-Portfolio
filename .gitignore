@@ -27,3 +27,4 @@ dist-ssr
 /public/assets/about-image2.jpg
 /scratch.txt
 /src/hooks/context.jsx
+/src/components/modals/contact-modal3.jsx

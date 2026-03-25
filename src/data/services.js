@@ -24,7 +24,8 @@ export const services = [
         tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
         link: "#",
         git: "https://github.com/rfcm-git/E-Commerce-Website",
-        attentionGrabber: true
+        attentionGrabber: true,
+        imageUrl: "/assets/under-construction.jpg"
       },
       {
         title: 'Generating Hexagonal Pattern',
@@ -33,7 +34,8 @@ export const services = [
         link: "#",
         git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
         attentionGrabber: true,
-        videoUrl: "/assets/Generating-Hexagonal-Pattern-Sample-Video.mp4"
+        videoUrl: "/assets/Generating-Hexagonal-Pattern-Sample-Video.mp4",
+        imageUrl: "/assets/under-construction.jpg"
       }
     ]
   },
@@ -69,7 +71,7 @@ export const services = [
         tech: ['HTML5', 'Tailwind', 'JavaScript'],
         link: "https://connect4dotsgame.netlify.app/",
         git: "https://github.com/rfcm-git/Connect-4-Game",
-        imageUrl: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=1000&auto=format&fit=crop"
+        imageUrl: "/assets/under-construction.jpg"
       },
       {
         title: 'Blog Web App Built with FastAPI',
@@ -77,7 +79,7 @@ export const services = [
         tech: ['FastAPI', 'PostgreSQL', 'Python', 'SQLAlchemy', 'JWT', 'Pydantic'],
         link: "https://fastapi-blog-website-gorb.onrender.com",
         git: "https://github.com/rfcm-git/FastAPI-blog-website",
-        imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop"
+        imageUrl: "/assets/under-construction.jpg"
       }
     ]
   },
@@ -102,13 +104,15 @@ export const services = [
         title: 'Automated AI Data Pipeline',
         desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
         tech: ['n8n', 'OpenAI', 'MySQL'],
-        link: "#"
+        link: "#",
+        imageUrl: "/assets/under-construction.jpg"
       },
       {
         title: 'BI Performance Dashboard',
         desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
         tech: ['Power BI', 'Excel', 'VBA'],
-        link: "#"
+        link: "#",
+        imageUrl: "/assets/under-construction.jpg"
       }
     ]
   }
