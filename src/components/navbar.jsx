@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Mail, Github, Linkedin, Facebook, ChevronRight, Cpu, Globe, BarChart3, Code2, Wrench, Search, Bot } from 'lucide-react';
+import { Mail, Github, Linkedin, Facebook, Bot, SeparatorHorizontalIcon, SeparatorHorizontal } from 'lucide-react';
 import { cvLinks, contact } from "../constants/contacts";
 
 export const Navbar = ({ setShowContactModal }) => {
@@ -18,6 +18,13 @@ export const Navbar = ({ setShowContactModal }) => {
 
   const resetNav = () => setMousePos({ x: 0, y: 0 });
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* Floating Header Navigation */}
@@ -32,19 +39,30 @@ export const Navbar = ({ setShowContactModal }) => {
           className="pointer-events-auto nav-glow-border p-[1px] rounded-full w-[20]"
         >
           <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-16 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
-            <div className=" flex items-center gap-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
-              <div className="flex gap-1 flex-row items-center hover:text-white transition-colors text-blue-500">
+            <div className=" flex items-center gap-5 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
+
+              <div className="flex gap-1 flex-row items-center hover:text-white transition-colors text-blue-500 relative group/btn">
                 <Bot size={14} />
-                <a href="#hero">TechDevRichard</a>
+                <button onClick={() => scrollToSection("hero")} >
+                  <span className="relative">
+                    TechDevRichard
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                  </span>
+                </button>
               </div>
 
-              <div>
-                <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
-              </div>
+              <button onClick={() => scrollToSection("projects")} className="hover:text-blue-300 relative group/btn ">
+                <span className="relative">
+                  Projects
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                </span>
+              </button>
 
-              <div>
-                <a href="#about" className="hover:text-blue-400 transition-colors ">About</a>
-              </div>
+              <button onClick={() => scrollToSection("about")} className="hover:text-blue-300 relative group/btn ">
+                About
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+              </button>
+
               <button
                 onClick={() => setShowContactModal(true)}
                 className="text-white hover:text-blue-300 transition-all flex items-center gap-2 relative group/btn"
@@ -55,7 +73,9 @@ export const Navbar = ({ setShowContactModal }) => {
                   <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
                 </span>
               </button>
+
             </div>
+
             <div className="h-4 w-px bg-white/10" />
             <div className="flex items-center gap-4">
               <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-all hover:scale-110">

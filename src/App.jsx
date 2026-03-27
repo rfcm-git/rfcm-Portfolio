@@ -10,8 +10,6 @@ import { Navbar } from "./components/navbar";
 
 import { ContactModal } from "./components/modals/contact-modal";
 
-import { Skills } from './sections/skills';
-import { ProjectGallery } from './sections/project-gallery';
 import ProjectSection from './sections/project-section';
 import { Footer } from "./components/footer";
 import About from './sections/about';
@@ -29,6 +27,7 @@ const App = () => {
       <div className=" min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-blue-500/30 overflow-auto" >
         <IntroPage setShowMainContent={setShowMainContent} />
         <ThreeBackground />
+        
         {/* Persistent Notification System */}
         {notification && (
           <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[300] animate-in slide-in-from-top-4 duration-300">
@@ -43,16 +42,11 @@ const App = () => {
           }`}>
 
           <Navbar setShowContactModal={setShowContactModal} />
-
           <HeroSection setShowContactModal={setShowContactModal} />
           <About />
-          {/*  Skills /> */}
-          {/* <ProjectGallery setNotification={setNotification} /> */}
           <ProjectSection />
-
-
-
           <Footer />
+
         </div>
 
         {/* Popup Contact Form Modal */}

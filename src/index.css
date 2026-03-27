@@ -168,6 +168,7 @@
   75% {
     transform: translateX(3px) rotate(6deg) scale(1.35);
   }
+
 }
 
 .attention-github {
@@ -201,7 +202,7 @@
 }
 
 .animate-slow-wiggle {
-  animation: slow-wiggle 0.2s ease-in-out infinite;
+  animation: slow-wiggle 0.3s ease-in-out 0s 3;
 }
 
 .icon-glow-blue {
@@ -283,32 +284,6 @@ html {
   /* Firefox */
 }
 
-@keyframes fadeInScale {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-
-  30% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  70% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-10px) scale(1.02);
-  }
-}
-
-.animate-fade-in-scale {
-  animation: fadeInScale 2.5s ease-out forwards;
-}
-
 /* Sticky Stacking Logic */
 .stacking-section {
   position: sticky;
@@ -318,4 +293,73 @@ html {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@keyframes bounce-horizontal {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+.animate-bounce-horizontal {
+  animation: bounce-horizontal 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes bounce-horizontal {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+.animate-bounce-horizontal {
+  animation: bounce-horizontal 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
 }

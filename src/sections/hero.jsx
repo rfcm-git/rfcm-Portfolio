@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Facebook, Download } from 'lucide-react';
 import { contact, cvLinks } from '../constants/contacts';
 
-export const HeroSection = ({ setShowContactModal }) => {
+export const HeroSection = () => {
   const title = "& Technical Virtual Assistant";
   const [displayName, setDisplayName] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
@@ -11,13 +11,9 @@ export const HeroSection = ({ setShowContactModal }) => {
 
   // Cycle the roles
   useEffect(() => {
-    const engineerInterval = setInterval(() => {
+    setInterval(() => {
       setEngineerType(prev => prev === 'Full-Stack' ? 'BACKEND' : 'Full-Stack');
     }, 3000);
-
-    return () => {
-      clearInterval(engineerInterval);
-    };
   }, []);
 
   useEffect(() => {
@@ -73,8 +69,9 @@ export const HeroSection = ({ setShowContactModal }) => {
             </div>
 
             <p className="text-slate-400 text-2xl md:text-2xl max-w-4xl mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-6">
-              I build scalable <span className="text-white">web applications </span>
-              and help businesses with <span className="text-white">data analysis, automation, and technical support</span>.
+              I build scalable <span className="text-white">web applications </span> 
+              and help businesses streamline workflows through 
+              <span className="text-white"> automation, data management, technical support, and efficient backend systems.</span>
             </p>
             <div className="flex flex-wrap gap-4">
               

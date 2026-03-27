@@ -9,7 +9,7 @@ export const services = [
     bg: 'bg-blue-500',
     cvUrl: cvLinks.software,
     serviceDesc: 'Developing high-performance applications with expertise in C++ systems, Java backends, and Python automation.',
-    skills: ['C++', 'Java', 'Spring OpenGL', 'Python', 'OpenCV', 'OOP'],
+    skills: ['C++', 'Java', 'Spring Boot', 'OpenGL', 'Python', 'OpenCV', 'OOP'],
     offerings: [
       'C++ Tooling & Graphics Systems',
       'Java Spring Boot Backend Services',
@@ -18,24 +18,24 @@ export const services = [
       'Desktop & Enterprise Applications'
     ],
     projects: [
+      ,
       {
-        title: 'E-Commerce Website Template',
-        desc: 'A robust and responsive digital storefront featuring dynamic product catalogs and optimized user flows for modern online retail.',
-        tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
+        id: 'p1',
+        title: 'Hexagonal Pattern Visualization',
+        desc: 'A real-time C++ visualization tool that renders interactive hexagonal grid patterns using Dear ImGui. The project demonstrates clean architectural design through the implementation of Hexagonal Architecture, ensuring a clear separation between core logic and UI rendering.',
+        tech: ['C++', 'Dear ImGui', 'OpenGL', 'STL'],
+        keyFeatures: [ 'Real-time hexagonal grid rendering' , 'Interactive controls via Dear ImGui', 'Clean architecture (Hexagonal Architecture pattern)', 'Immediate-mode GUI for fast updates', 'Modular and scalable code structure', 'Efficient geometric computation of hex grids' ],
         link: "#",
-        git: "https://github.com/rfcm-git/E-Commerce-Website",
-        attentionGrabber: true,
-        imageUrl: "/assets/under-construction.jpg"
-      },
-      {
-        title: 'Generating Hexagonal Pattern',
-        desc: 'A procedural graphics project demonstrating efficient rendering and mathematical tiling using ImGui and C++.',
-        tech: ['C++', 'ImGui', 'OpenGL'],
-        link: "#",
+        videoUrl: "assets/hex-pattern/video-sample.mp4",
         git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
         attentionGrabber: true,
-        videoUrl: "/assets/Generating-Hexagonal-Pattern-Sample-Video.mp4",
-        imageUrl: "/assets/under-construction.jpg"
+        tooLongToRender: false,
+        previewType: 'image',
+        images: [
+          "assets/hex-pattern/profile.png", // geometric grid
+          "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1000&auto=format&fit=crop", // code visualization
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"  // dev workspace
+        ]
       }
     ]
   },
@@ -48,11 +48,20 @@ export const services = [
     cvUrl: cvLinks.web,
     serviceDesc: 'Designing and building scalable, API-driven systems with Python, focusing on clean architecture, performance, and reliability—paired with modern React-based frontend integration.',
     skills: [
-      'FastAPI', 'Flask', 'Python',
-      'PostgreSQL', 'SQLite',
-      'Pydantic', 'JWT', 'OAuth2',
-      'Redis', 'Docker',
-      'React', 'Next.js', 'JavaScript', 'Tailwind CSS'
+      'FastAPI',
+      'Flask',
+      'Python',
+      'PostgreSQL',
+      'SQLite',
+      'Pydantic',
+      'JWT',
+      'OAuth2',
+      'Redis',
+      'Docker',
+      'React',
+      'Next.js',
+      'JavaScript',
+      'Tailwind CSS'
     ],
     offerings: [
       'High-Performance REST APIs with FastAPI',
@@ -66,20 +75,55 @@ export const services = [
     ],
     projects: [
       {
-        title: 'Connect 4 Dots Game',
-        desc: 'A modern, interactive recreation of the classic Connect 4 game with smooth animations and responsive design.',
-        tech: ['HTML5', 'Tailwind', 'JavaScript'],
-        link: "https://connect4dotsgame.netlify.app/",
-        git: "https://github.com/rfcm-git/Connect-4-Game",
-        imageUrl: "/assets/under-construction.jpg"
+        id: 'p2',
+        title: 'E-Commerce Website Template',
+        desc: 'A robust and responsive digital storefront featuring dynamic product catalogs and optimized user flows for modern online retail.',
+        tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
+        link: "#",
+        git: "https://github.com/rfcm-git/E-Commerce-Website",
+        attentionGrabber: true,
+        tooLongToRender: true,
+        previewType: 'link',
+        images: [
+          "assets/e-commerse-web/profile.png",
+          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+        ]
       },
       {
+        id: 'p3',
+        title: 'Connect 4 Dots Game',
+        desc: 'A modern, interactive recreation of the classic Connect 4 game with smooth animations and responsive design.',
+        tech: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+        link: "https://connect4dotsgame.netlify.app/",
+        git: "https://github.com/rfcm-git/Connect-4-Game",
+        attentionGrabber: true,
+        tooLongToRender: false,
+        previewType: 'link',
+        images: [
+          "/assets/connect-4-dots/profile.png",
+          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+        ]
+      },
+      {
+        id: 'p4',
         title: 'Blog Web App Built with FastAPI',
-        desc: 'A blog web application built with FastAPI, featuring server-side rendering, API-driven content management, and modern backend architecture.',
-        tech: ['FastAPI', 'PostgreSQL', 'Python', 'SQLAlchemy', 'JWT', 'Pydantic'],
+        desc: 'A production-ready blog platform built with FastAPI that supports secure authentication using JWT and OAuth, along with user profile management including image uploads. The system exposes RESTful APIs for content management and demonstrates modern backend development practices.',
+        tech: ['Python', 'FastAPI', 'JWT (JSON Web Tokens)', 'OAuth 2.0', 'Pydantic', 'Uvicorn', 'SQLite / PostgreSQL', 'File Upload Handling', 'Jinja2 / HTML'],
         link: "https://fastapi-blog-website-gorb.onrender.com",
         git: "https://github.com/rfcm-git/FastAPI-blog-website",
-        imageUrl: "/assets/under-construction.jpg"
+        keyFeatures: [ 'Blog CRUD operations (posts management)', 'JWT authentication for secure API access', 
+          'OAuth 2.0 login integration', 'User registration and login system', 'Profile image upload support' , 'File handling using multipart/form-data',
+          'Interactive API documentation (/docs)', 'Async, high-performance endpoints', 'Clean and modular architecture' ],
+        attentionGrabber: true,
+        tooLongToRender: true,
+        previewType: 'link',
+        images: [
+          "/assets/blog-website/profile.png",
+          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+        ]
       }
     ]
   },
@@ -101,18 +145,34 @@ export const services = [
     ],
     projects: [
       {
+        id: 'p5',
         title: 'Automated AI Data Pipeline',
         desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
         tech: ['n8n', 'OpenAI', 'MySQL'],
         link: "#",
-        imageUrl: "/assets/under-construction.jpg"
+        attentionGrabber: true,
+        tooLongToRender: false,
+        previewType: 'link',
+        images: [
+          "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+        ]
       },
       {
+        id: 'p6',
         title: 'BI Performance Dashboard',
         desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
         tech: ['Power BI', 'Excel', 'VBA'],
         link: "#",
-        imageUrl: "/assets/under-construction.jpg"
+        attentionGrabber: true,
+        tooLongToRender: false,
+        previewType: 'link',
+        images: [
+          "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+        ]
       }
     ]
   }
