@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, ChevronDown, Monitor, ImageIcon, Eye, Play, AlertCircle } from "lucide-react";
+import { ExternalLink, Eye, Play, AlertCircle } from "lucide-react";
+import { Github } from "../../svc-icons.jsx";
 import { services } from "../data/services";
 import ConfirmationModal from "../components/modals/confirmation-modal";
 import { VideoPlayerModal } from "../components/modals/videoplayer-modal";
@@ -8,8 +9,8 @@ import ProjectDetailsModal from "../components/modals/project-detail-modal";
 const ProjectSection = () => {
   const [pendingUrl, setPendingUrl] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // New States for Interaction
   const [notification, setNotification] = useState(null);

@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { Mail, Github, Linkedin, Facebook, Bot, SeparatorHorizontalIcon, SeparatorHorizontal } from 'lucide-react';
-import { cvLinks, contact } from "../constants/contacts";
+import { useState, useRef } from "react";
+import { Mail, Bot} from 'lucide-react';
+import { Linkedin, Facebook, Github } from '../../svc-icons.jsx';
+import { contact } from "../constants/contacts";
 
 export const Navbar = ({ setShowContactModal }) => {
 

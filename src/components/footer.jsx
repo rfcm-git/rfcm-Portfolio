@@ -1,4 +1,4 @@
-import { Linkedin, Github, Facebook, Mail } from 'lucide-react';
+import { Linkedin, Github, Facebook } from '../../svc-icons.jsx';
 import { contact, cvLinks } from '../constants/contacts';
 
 export const Footer = () => {

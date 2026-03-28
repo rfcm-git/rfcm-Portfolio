@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, CheckCircle2, ExternalLink, Github, ChevronDown, X, Play } from 'lucide-react';
-import { select } from 'three/tsl';
+import { ChevronLeft, ChevronRight, CheckCircle2, ExternalLink, ChevronDown, X, Play } from 'lucide-react';
+import { Github } from '../../../svc-icons.jsx';
 
 const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVideo, triggerLiveViewPrompt, isVisible }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
@@ -20,7 +20,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
   };
 
   // Auto-slide effect for project images
-  useEffect(() => {
+  useEffect(() => { 
     let interval;
     if (selectedProject && selectedProject.images.length > 1) {
       interval = setInterval(() => {

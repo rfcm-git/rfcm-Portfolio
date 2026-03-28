@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Facebook, Download } from 'lucide-react';
+import { Facebook, Linkedin, Github, Download } from '../../svc-icons.jsx';
 import { contact, cvLinks } from '../constants/contacts';
 
 export const HeroSection = () => {
@@ -69,29 +69,30 @@ export const HeroSection = () => {
             </div>
 
             <p className="text-slate-400 text-2xl md:text-2xl max-w-4xl mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-6">
-              I build scalable <span className="text-white">web applications </span> 
-              and help businesses streamline workflows through 
+              I build scalable <span className="text-white">web applications </span>
+              and help businesses streamline workflows through
               <span className="text-white"> automation, data management, technical support, and efficient backend systems.</span>
             </p>
             <div className="flex flex-wrap gap-4">
-              
+
               <button
                 onClick={cvLinks.web ? () => window.open(cvLinks.web, '_blank') : null}
                 title="Get CV"
                 className="px-16 py-4 bg-white text-slate-950 rounded-xl font-black flex items-center gap-2 hover:bg-slate-200 transition-all icon-glow-slate"
               >
                 Get CV
-                <Download size={18} className="animate-bounce group-hover:translate-x-1 transition-transform" />
+                <Download className="animate-bounce group-hover:translate-x-1 transition-transform" />
               </button>
 
               <div className="flex gap-2">
-                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
+                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
                   <Linkedin size={20} className="text-blue-500" />
                 </a>
-                <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-blue">
+
+                <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
                   <Facebook size={20} className="text-blue-600" />
                 </a>
-                <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 transition-all flex items-center gap-2 icon-glow-slate">
+                <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-slate">
                   <Github size={20} />
                 </a>
               </div>

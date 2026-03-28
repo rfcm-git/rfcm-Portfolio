@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { CheckCircle2, Send, X, MessageSquare, Loader2} from 'lucide-react';
-import { contact } from '../../constants/contacts';
 
 export const ContactModal = ({ setShowContactModal }) => {
   const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success

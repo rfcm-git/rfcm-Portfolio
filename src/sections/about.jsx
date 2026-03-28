@@ -1,5 +1,5 @@
 
-import { Github, ExternalLink, ChevronDown, ChevronUp, Database, Sparkles, Terminal, Server, GraduationCap, ShieldCheck, Code2, Layout, CheckCircle2, Cpu } from 'lucide-react';
+import { GraduationCap,CheckCircle2} from 'lucide-react';
 import { services } from '../data/services';
 
 const About = () => {
