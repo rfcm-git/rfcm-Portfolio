@@ -41,7 +41,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
           </button>
 
           {/* CAROUSEL HEADER IMAGE */}
-          <div className="relative h-80 md:h-96 sm:h-96 w-full flex-shrink-0 group/carousel overflow-hidden bg-black">
+          <div className="relative h-80 md:h-96 sm:h-96 w-full shrink-0 group/carousel overflow-hidden bg-black">
             {/* Image Container with Hover Expansion */}
             <div className="w-full h-full relative">
               {selectedProject.images.map((img, i) => (
@@ -55,7 +55,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
             </div>
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none opacity-80" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent pointer-events-none opacity-80" />
 
             {/* Navigation Controls - Only show if multiple images */}
             {selectedProject.images.length > 1 && (
@@ -94,7 +94,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
               <div className="md:col-span-2 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <h4 className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
-                    <div className="w-8 h-[1px] bg-slate-800"></div>
+                    <div className="w-8 h-px bg-slate-800"></div>
                     Project Overview
                   </h4>
                   <p className="text-slate-300 leading-relaxed text-lg">{selectedProject.desc}</p>
@@ -128,7 +128,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
                       if (selectedProject.title === 'Blog Web App Built with FastAPI') {
                         triggerLiveViewPrompt(selectedProject.link)
                       } else if (!isVisible) {
-                        triggerLiveViewPrompt(selectedProject.link); setSelectedProject(null);
+                        window.open(selectedProject.link, '_blank'); setSelectedProject(null);
                       }
                     }}
                     className="w-full flex items-center justify-center gap-3 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl transition-all shadow-xl shadow-emerald-900/20 active:scale-95"

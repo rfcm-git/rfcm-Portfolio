@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Facebook, Linkedin, Github, Download } from '../../svc-icons.jsx';
 import { contact, cvLinks } from '../constants/contacts';
 

@@ -1,9 +1,8 @@
-import { Cpu, Database, Globe, Download, Zap } from "lucide-react";
+import { Cpu, Database, Globe, Zap } from "lucide-react";
 import { services } from "../data/services";
 
 export const Skills = () => {
-
-
+  
   return (
     <>
       {/* Skills / Services Section */}
@@ -25,7 +24,7 @@ export const Skills = () => {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                <p className="text-slate-400 text-sm leading-relaxed mb-8 grow">
                   {service.serviceDesc}
                 </p>
 

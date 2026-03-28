@@ -24,7 +24,7 @@ export const services = [
         title: 'Hexagonal Pattern Visualization',
         desc: 'A real-time C++ visualization tool that renders interactive hexagonal grid patterns using Dear ImGui. The project demonstrates clean architectural design through the implementation of Hexagonal Architecture, ensuring a clear separation between core logic and UI rendering.',
         tech: ['C++', 'Dear ImGui', 'OpenGL', 'STL'],
-        keyFeatures: [ 'Real-time hexagonal grid rendering' , 'Interactive controls via Dear ImGui', 'Clean architecture (Hexagonal Architecture pattern)', 'Immediate-mode GUI for fast updates', 'Modular and scalable code structure', 'Efficient geometric computation of hex grids' ],
+        keyFeatures: ['Real-time hexagonal grid rendering', 'Interactive controls via Dear ImGui', 'Clean architecture (Hexagonal Architecture pattern)', 'Immediate-mode GUI for fast updates', 'Modular and scalable code structure', 'Efficient geometric computation of hex grids'],
         link: "#",
         videoUrl: "assets/hex-pattern/video-sample.mp4",
         git: "https://github.com/rfcm-git/Hexagonal-Pattern-using-ImGui",
@@ -77,8 +77,15 @@ export const services = [
       {
         id: 'p2',
         title: 'E-Commerce Website Template',
-        desc: 'A robust and responsive digital storefront featuring dynamic product catalogs and optimized user flows for modern online retail.',
-        tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
+        desc: 'A full-stack e-commerce platform built with React, featuring dynamic product listings, category filtering, shopping cart management, and a basic checkout flow. Styled with styled-components for modular CSS and integrated with a REST API for product data.',
+        tech: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Styled-Components', 'REST API'],
+        keyFeatures: [
+          'Dynamic product listings',
+          'Category filtering',
+          'Shopping cart management',
+          'Streamlined checkout flow',
+          'Responsive and modern UI'
+        ],
         link: "#",
         git: "https://github.com/rfcm-git/E-Commerce-Website",
         attentionGrabber: true,
@@ -86,24 +93,33 @@ export const services = [
         previewType: 'link',
         images: [
           "assets/e-commerse-web/profile.png",
-          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+          "assets/e-commerse-web/2.png",
+          "assets/e-commerse-web/3.png",
+          "assets/e-commerse-web/4.png"
         ]
       },
       {
         id: 'p3',
-        title: 'Connect 4 Dots Game',
-        desc: 'A modern, interactive recreation of the classic Connect 4 game with smooth animations and responsive design.',
-        tech: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+        title: 'Connect‑4 Game',
+        desc: 'A classic Connect‑4 game built with React to practice state management, dynamic styling, and game logic. Players take turns dropping discs into a grid, aiming to connect four in a row horizontally, vertically, or diagonally. The game tracks player turns, detects wins, and visually updates the board in real time, providing an interactive and responsive gaming experience. Ideal for showcasing skills in React components, state handling, and interactive UI design.',
+        tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
+        keyFeatures: [
+          'Interactive Connect‑4 board gameplay',
+          'Turn‑based logic for two players',
+          'State management for game progress and win detection',
+          'Dynamic styling and responsive UI'
+        ],
         link: "https://connect4dotsgame.netlify.app/",
         git: "https://github.com/rfcm-git/Connect-4-Game",
         attentionGrabber: true,
-        tooLongToRender: false,
+        tooLongToRender: true,
         previewType: 'link',
         images: [
-          "/assets/connect-4-dots/profile.png",
-          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+          "assets/connect-4-dots/profile.png",
+          "assets/connect-4-dots/2.png",
+          "assets/connect-4-dots/3.png",
+          "assets/connect-4-dots/4.png",
+          "assets/connect-4-dots/5.png"
         ]
       },
       {
@@ -113,16 +129,25 @@ export const services = [
         tech: ['Python', 'FastAPI', 'JWT (JSON Web Tokens)', 'OAuth 2.0', 'Pydantic', 'Uvicorn', 'SQLite / PostgreSQL', 'File Upload Handling', 'Jinja2 / HTML'],
         link: "https://fastapi-blog-website-gorb.onrender.com",
         git: "https://github.com/rfcm-git/FastAPI-blog-website",
-        keyFeatures: [ 'Blog CRUD operations (posts management)', 'JWT authentication for secure API access', 
-          'OAuth 2.0 login integration', 'User registration and login system', 'Profile image upload support' , 'File handling using multipart/form-data',
-          'Interactive API documentation (/docs)', 'Async, high-performance endpoints', 'Clean and modular architecture' ],
+        keyFeatures: ['Blog CRUD operations (posts management)', 'JWT authentication for secure API access',
+          'OAuth 2.0 login integration', 'User registration and login system', 'Profile image upload support', 'File handling using multipart/form-data',
+          'Interactive API documentation (/docs)', 'Async, high-performance endpoints', 'Clean and modular architecture'],
         attentionGrabber: true,
         tooLongToRender: true,
         previewType: 'link',
         images: [
           "/assets/blog-website/profile.png",
-          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
+          "/assets/blog-website/2.png",
+          "/assets/blog-website/3.png",
+          "/assets/blog-website/4.png",
+          "/assets/blog-website/5.png",
+          "/assets/blog-website/6.png",
+          "/assets/blog-website/7.png",
+          "/assets/blog-website/8.png",
+          "/assets/blog-website/9.png",
+          "/assets/blog-website/10.png",
+          "/assets/blog-website/11.png",
+          "/assets/blog-website/12.png"
         ]
       }
     ]
@@ -150,6 +175,7 @@ export const services = [
         desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
         tech: ['n8n', 'OpenAI', 'MySQL'],
         link: "#",
+        git: "#",
         attentionGrabber: true,
         tooLongToRender: false,
         previewType: 'link',
@@ -165,6 +191,7 @@ export const services = [
         desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
         tech: ['Power BI', 'Excel', 'VBA'],
         link: "#",
+        git: "#",
         attentionGrabber: true,
         tooLongToRender: false,
         previewType: 'link',
