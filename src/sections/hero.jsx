@@ -75,8 +75,8 @@ export const HeroSection = () => {
               and help businesses streamline workflows through
               <span className="text-white"> automation, data management, technical support, and efficient backend systems.</span>
             </p>
-            <div className="flex flex-wrap gap-4">
 
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={cvLinks.web ? () => window.open(cvLinks.web, '_blank') : null}
                 title="Get CV"
@@ -86,30 +86,26 @@ export const HeroSection = () => {
                 <Download className="animate-bounce group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <div className="flex gap-2">
-                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
-                  <Linkedin size={20} className="text-blue-500" />
-                </a>
+              <a href={contact.linkedinUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
+                <Linkedin size={20} className="text-blue-500" />
+              </a>
 
-                <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
-                  <Facebook size={20} className="text-blue-600" />
-                </a>
-                <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-slate">
-                  <Github size={20} />
-                </a>
-              </div>
+              <a href={contact.facebookUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-blue">
+                <Facebook size={20} className="text-blue-600" />
+              </a>
+              <a href={contact.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-4 bg-slate-900 border border-slate-800 rounded-xl font-black hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2 icon-glow-slate">
+                <Github size={20} />
+              </a>
             </div>
           </div>
           <div className="lg:col-span-4 relative z-10">
-            <img
-              src="/assets/hero_image.png"
-              alt="Hero Image"
-              className="rounded-3xl filter-[drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
-                        hover:scale-105 transition-transform"
+            <img src="/assets/hero_image.png" alt="Hero Image"
+              className="rounded-3xl scale-90 filter-[drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
+                        hover:scale-95 transition-transform"
             />
           </div>
         </div>
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[150px] rounded-full -z-10" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-200 h-200 bg-blue-600/10 blur-[150px] rounded-full -z-10" />
       </section >
     </>
   );
