@@ -13,9 +13,9 @@ const About = () => {
   const mainService = services[1]; // Full-Stack / Backend focus
   return (
     <>
-      <section className="py-20 px-36 max-w-8xl flex flex-row gap-8 justify-center items-center" id="about">
+      <section id="about" className="relative py-20 px-6 max-w-7xl grid grid-cols-[40%_60%] items-center gap-4">
           {/* Left: Image Side */}
-          <div className="relative aspect-square w-[50%] h-auto rounded-3xl overflow-hidden bg-slate-950 border border-slate-800">
+          <div className="relative rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 col-span-1">
             <img
               src="/assets/about-image.jpg"
               alt="Backend Developer"
@@ -38,7 +38,7 @@ const About = () => {
           </div>
 
           {/* Right: Content Side */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 col-span-1">
             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 w-fit">
               <GraduationCap size={14} className="text-emerald-400" />
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">Computer Engineering Graduate</span>
@@ -71,7 +71,7 @@ const About = () => {
             </div>
 
             {/* Technical Stack */}
-            <div className="flex flex-col w-[50%] gap-3">
+            <div className="flex flex-col gap-3">
               <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">
                 Technical Stack
               </h4>

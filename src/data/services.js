@@ -32,9 +32,10 @@ export const services = [
         tooLongToRender: false,
         previewType: 'image',
         images: [
-          "assets/hex-pattern/profile.png", // geometric grid
-          "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1000&auto=format&fit=crop", // code visualization
-          "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"  // dev workspace
+          "assets/hex-pattern/profile.png",
+          "assets/hex-pattern/2.png",
+          "assets/hex-pattern/3.png",
+          "assets/hex-pattern/4.png"
         ]
       }
     ]
@@ -148,57 +149,6 @@ export const services = [
           "/assets/blog-website/10.png",
           "/assets/blog-website/11.png",
           "/assets/blog-website/12.png"
-        ]
-      }
-    ]
-  },
-  {
-    id: 'data',
-    title: 'Data & AI Automation',
-    subtitle: 'BI, Databases & Workflow AI',
-    color: 'text-purple-500',
-    bg: 'bg-purple-500',
-    cvUrl: cvLinks.data,
-    serviceDesc: 'Leveraging MySQL, Power BI, and automation tools like n8n to transform raw data into actionable business insights.',
-    skills: ['MySQL', 'Power BI', 'Excel/VBA', 'n8n', 'Python', 'OpenAI'],
-    offerings: [
-      'Advanced n8n Workflow Automation',
-      'MySQL & MS Access DB Engineering',
-      'AI Agent & LLM Orchestration',
-      'Power BI Insight Dashboards',
-      'Data Cleaning & ETL Pipelines'
-    ],
-    projects: [
-      {
-        id: 'p5',
-        title: 'Automated AI Data Pipeline',
-        desc: 'End-to-end automation using n8n to ingest, process with AI, and sync to databases.',
-        tech: ['n8n', 'OpenAI', 'MySQL'],
-        link: "#",
-        git: "#",
-        attentionGrabber: true,
-        tooLongToRender: false,
-        previewType: 'link',
-        images: [
-          "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
-        ]
-      },
-      {
-        id: 'p6',
-        title: 'BI Performance Dashboard',
-        desc: 'Interactive Power BI reports analyzing operational KPIs from multiple data sources.',
-        tech: ['Power BI', 'Excel', 'VBA'],
-        link: "#",
-        git: "#",
-        attentionGrabber: true,
-        tooLongToRender: false,
-        previewType: 'link',
-        images: [
-          "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop"
         ]
       }
     ]

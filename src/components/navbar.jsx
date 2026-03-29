@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Mail, Bot} from 'lucide-react';
+import { Mail, Bot } from 'lucide-react';
 import { Linkedin, Facebook, Github } from '../../svc-icons';
 import { contact } from "../constants/contacts";
 
@@ -7,6 +7,8 @@ export const Navbar = ({ setShowContactModal }) => {
 
   // Mouse tracking state for the navbar tilt effect
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  
+
   const navRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -31,13 +33,11 @@ export const Navbar = ({ setShowContactModal }) => {
       {/* Floating Header Navigation */}
       <nav className="fixed left-0 right-0 z-50 flex justify-center mt-6 px-6 pointer-events-z">
         <div
-          ref={navRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={resetNav}
+          ref={navRef} onMouseMove={handleMouseMove} onMouseLeave={resetNav}
           style={{
             transform: `rotateY(${mousePos.x}deg) rotateX(${-mousePos.y}deg) translateY(${mousePos.y}px) translateX(${mousePos.x}px)`,
           }}
-          className="pointer-events-auto nav-glow-border p-px rounded-full"
+          className="pointer-events-auto nav-glow-border rounded-full "
         >
           <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-16 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
             <div className=" flex items-center gap-5 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
@@ -74,7 +74,6 @@ export const Navbar = ({ setShowContactModal }) => {
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
                 </span>
               </button>
-
             </div>
 
             <div className="h-4 w-px bg-white/10" />

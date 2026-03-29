@@ -4,6 +4,7 @@ import { Github } from '../../../svc-icons';
 
 const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVideo, triggerLiveViewPrompt, isVisible }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
 
   const nextImage = (e) => {
     e?.stopPropagation();
@@ -20,15 +21,16 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
   };
 
   // Auto-slide effect for project images
-  useEffect(() => { 
-    let interval;
-    if (selectedProject && selectedProject.images.length > 1) {
-      interval = setInterval(() => {
+  useEffect(() => {
+    // Only run if project has multiple images and mouse is not hovered
+    if (selectedProject?.images.length > 1 && !hovered) {
+      const interval = setInterval(() => {
         setCurrentImgIndex((prev) => (prev + 1) % selectedProject.images.length);
       }, 3000);
+
+      return () => clearInterval(interval);
     }
-    return () => clearInterval(interval);
-  }, [selectedProject]);
+  }, [selectedProject, hovered]);
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 animate-in fade-in duration-300">
@@ -43,7 +45,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
           {/* CAROUSEL HEADER IMAGE */}
           <div className="relative h-80 md:h-96 sm:h-96 w-full shrink-0 group/carousel overflow-hidden bg-black">
             {/* Image Container with Hover Expansion */}
-            <div className="w-full h-full relative">
+            <div className="w-full h-full relative" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
               {selectedProject.images.map((img, i) => (
                 <img
                   key={i}
@@ -160,7 +162,7 @@ const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVid
               </div>
             </div>
             {/* PERSISTENT SCROLL INDICATOR ARROW */}
-            <div className="sticky bottom-0 left-0 right-0 col-span-full flex justify-center pb-4 pointer-events-none z-40 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent">
+            <div className="sticky bottom-0 left-0 right-0 col-span-full flex justify-center pb-4 pointer-events-none z-40 bg-linear-to-t from-slate-900 via-slate-900/80 to-transparent">
               <ChevronDown size={32} className="animate-bounce shadow-lg" />
             </div>
           </div>

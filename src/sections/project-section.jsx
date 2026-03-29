@@ -92,7 +92,7 @@ const ProjectSection = () => {
           <p className="text-slate-500 max-w-lg">A selection of my recent work in systems engineering and interactive web development.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 px-40 gap-4">
           {services.flatMap((s) => s.projects.map((p) => ({ ...p, sId: s.id, sBg: s.bg, sColor: s.color })))
             .map((project, idx) => (
               <div key={idx} className="group bg-slate-950 border border-slate-800 rounded-3xl hover:border-emerald-500/30 transition-all flex flex-col group/card shadow-2xl relative overflow-hidden">
@@ -162,7 +162,6 @@ const ProjectSection = () => {
                           <ExternalLink size={18} />
                         </a>
                       )}
-
                     </div>
                   </div>
 
@@ -200,16 +199,16 @@ const ProjectSection = () => {
         />
       )}
 
-
       {/* Persistent Notification System */}
       {notification && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[300] animate-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-300 animate-in slide-in-from-top-4 duration-300">
           <div className="bg-red-500/90 backdrop-blur-xl border border-white/20 text-white px-8 py-4 rounded-3xl shadow-2xl flex items-center gap-3 font-black uppercase tracking-widest text-[10px]">
             <AlertCircle size={18} className="animate-pulse" />
             {notification}
           </div>
         </div>
       )}
+
     </>
   );
 };

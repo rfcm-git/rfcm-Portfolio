@@ -8,12 +8,14 @@ export const HeroSection = () => {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [engineerType, setEngineerType] = useState('Full-Stack');
 
-
-  // Cycle the roles
   useEffect(() => {
-    setInterval(() => {
-      setEngineerType(prev => prev === 'Full-Stack' ? 'BACKEND' : 'Full-Stack');
+    const interval = setInterval(() => {
+      setEngineerType(prev =>
+        prev === 'Full-Stack' ? 'Backend' : 'Full-Stack'
+      );
     }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export const HeroSection = () => {
           clearInterval(typingInterval);
           resetTimeout = setTimeout(startTyping, 1500);
         }
-      }, 1000 / 7); // Typing speed (12 characters per second)
+      }, 1000 / 7);
     };
 
     startTyping();
@@ -52,7 +54,7 @@ export const HeroSection = () => {
       <section id="hero" className="relative py-20 pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 items-center relative z-10 w-full">
           <div className="lg:col-span-8 flex flex-col gap-2 text-center lg:text-left">
-            <h1 className="flex items-center text-6xl md:text-24xl font-black tracking-normal leading-none uppercase">
+            <h1 className="flex items-center text-6xl md:text-24xl font-black tracking-normal leading-none uppercase gap-4">
               <span className="h-[1.1em] overflow-hidden relative flex items-center">
                 <span key={engineerType} className="block animate-slide-right leading-none">
                   {engineerType}
