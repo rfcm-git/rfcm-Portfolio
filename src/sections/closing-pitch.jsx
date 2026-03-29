@@ -7,7 +7,7 @@ export const ClosingPitch = ({setShowContactModal}) => {
       {/* Closing Pitch / Contact Section */}
       <section id="closing-pitch" className="py-32 px-6 scroll-mt-20">
         <div className="max-w-4xl mx-auto relative group">
-          <div className="absolute -inset-[2px] rounded-[3.1rem] bg-gradient-to-r from-blue-600 via-purple-500 to-emerald-400 animate-gradient opacity-40 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
+          <div className="absolute -inset-0.5 rounded-[3.1rem] bg-linear-to-r from-blue-600 via-purple-500 to-emerald-400 animate-gradient opacity-40 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
 
           <div className="relative text-center bg-slate-950 border border-white/10 rounded-[3rem] p-12 md:p-20 overflow-hidden shadow-2xl">
             <div className="absolute inset-0 animate-mesh pointer-events-none" />
@@ -19,7 +19,7 @@ export const ClosingPitch = ({setShowContactModal}) => {
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight">
-                Let's solve <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">technical problems</span>.
+                Let's solve <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400">technical problems</span>.
               </h2>
 
               <p className="text-slate-400 text-lg mb-12 max-w-xl mx-auto leading-relaxed italic">

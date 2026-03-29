@@ -113,7 +113,7 @@ const ProjectSection = () => {
                   </div>
                 </button>
 
-                <div className="p-8 flex flex-col gap-5 relative z-10 -mt-12 bg-slate-950/50 backdrop-blur-xl border-t border-slate-800 rounded-b-3xl flex-grow">
+                <div className="p-8 flex flex-col gap-5 relative z-10 -mt-12 bg-slate-950/50 backdrop-blur-xl border-t border-slate-800 rounded-b-3xl grow">
                   <div className="flex justify-between items-start gap-4">
                     <h3 className="text-2xl font-bold text-white tracking-tight group-hover/card:text-emerald-400 transition-colors">{project.title}</h3>
 
@@ -127,7 +127,10 @@ const ProjectSection = () => {
                               className={`text-blue-500 transition-all ${project.attentionGrabber ? 'attention-github' : 'hover:text-white hover:scale-110'}`}
                             />
                           </a>
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider rounded-lg opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl shadow-blue-500/20 translate-y-2 group-hover/tooltip:translate-y-0 z-[100]">
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase 
+                          tracking-wider rounded-lg opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl 
+                          shadow-blue-500/20 translate-y-2 group-hover/tooltip:translate-y-0 z-100"
+                          >
                             view source code
                             <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-blue-600" />
                           </div>

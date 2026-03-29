@@ -58,12 +58,12 @@ export const HeroSection = () => {
                   {engineerType}
                 </span>
               </span>
-              <span className="ml-2 animate-gradient text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-400 to-blue-600 font-black leading-none">
+              <span className="ml-2 animate-gradient text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-emerald-400 to-blue-600 font-black leading-none">
                 Developer
               </span>
             </h1>
 
-            <div className="md:text-2xl font-bold tracking-wide text-slate-400 flex items-center min-h-[40px] min-w-[350px]">
+            <div className="md:text-2xl font-bold tracking-wide text-slate-400 flex items-center min-h-10 min-w-87.5">
               <span className="text-blue-500">{displayName}</span>
               <span className={`w-1 h-12 md:h-8 bg-blue-500 ml-1 ${!isTypingComplete ? 'cursor-blink' : 'opacity-0'}`} />
             </div>
@@ -102,12 +102,12 @@ export const HeroSection = () => {
             <img
               src="/assets/hero_image.png"
               alt="Hero Image"
-              className="rounded-3xl [filter:drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
+              className="rounded-3xl filter-[drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
                         hover:scale-105 transition-transform"
             />
           </div>
         </div>
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full -z-10" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[150px] rounded-full -z-10" />
       </section >
     </>
   );

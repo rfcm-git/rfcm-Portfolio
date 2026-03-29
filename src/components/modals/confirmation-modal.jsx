@@ -5,7 +5,7 @@ const ConfirmationModal = ({ pendingUrl, isVisible, onCancel, onConfirm }) => {
 
   return (
     <div
-      className={`fixed top-8 left-1/2 -translate-x-1/2 z-[200] w-full max-w-xl px-4
+      className={`fixed top-8 left-1/2 -translate-x-1/2 z-200 w-full max-w-xl px-4
         transition-all duration-300 ease-out
         ${isVisible
           ? 'opacity-100 translate-y-0 scale-100'

@@ -45,7 +45,7 @@ export const ContactModal = ({ setShowContactModal }) => {
       );
   };
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-x3 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-100 flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-x3 animate-in fade-in duration-300">
       <div className="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
         <div className="bg-slate-800/50 p-8 border-b border-slate-700 flex justify-between items-center">
           <div className="flex items-center gap-4">

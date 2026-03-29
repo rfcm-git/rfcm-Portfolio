@@ -37,7 +37,7 @@ export const Navbar = ({ setShowContactModal }) => {
           style={{
             transform: `rotateY(${mousePos.x}deg) rotateX(${-mousePos.y}deg) translateY(${mousePos.y}px) translateX(${mousePos.x}px)`,
           }}
-          className="pointer-events-auto nav-glow-border p-[1px] rounded-full w-[20]"
+          className="pointer-events-auto nav-glow-border p-px rounded-full w-[20]"
         >
           <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-16 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
             <div className=" flex items-center gap-5 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
@@ -47,7 +47,7 @@ export const Navbar = ({ setShowContactModal }) => {
                 <button onClick={() => scrollToSection("hero")} >
                   <span className="relative">
                     TechDevRichard
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
                   </span>
                 </button>
               </div>
@@ -55,13 +55,13 @@ export const Navbar = ({ setShowContactModal }) => {
               <button onClick={() => scrollToSection("projects")} className="hover:text-blue-300 relative group/btn ">
                 <span className="relative">
                   Projects
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
                 </span>
               </button>
 
               <button onClick={() => scrollToSection("about")} className="hover:text-blue-300 relative group/btn ">
                 About
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
               </button>
 
               <button
@@ -71,7 +71,7 @@ export const Navbar = ({ setShowContactModal }) => {
                 <Mail size={12} className="text-blue-500 group-hover/btn:scale-110 transition-transform" />
                 <span className="relative">
                   Hire Me
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-500 group-hover/btn:w-full transition-all duration-300" />
                 </span>
               </button>
 

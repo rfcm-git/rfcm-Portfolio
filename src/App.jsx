@@ -30,7 +30,7 @@ const App = () => {
         
         {/* Persistent Notification System */}
         {notification && (
-          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[300] animate-in slide-in-from-top-4 duration-300">
+          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-300 animate-in slide-in-from-top-4 duration-300">
             <div className="bg-red-500/90 backdrop-blur-xl border border-white/20 text-white px-8 py-4 rounded-3xl shadow-2xl flex items-center gap-3 font-black uppercase tracking-widest text-[10px]">
               <AlertCircle size={18} className="animate-pulse" />
               {notification}
