@@ -29,7 +29,7 @@ export const Navbar = ({ setShowContactModal }) => {
   return (
     <>
       {/* Floating Header Navigation */}
-      <nav className="fixed left-0 right-0 z-50 flex justify-center mt-6 px-6 pointer-events-none">
+      <nav className="fixed left-0 right-0 z-50 flex justify-center mt-6 px-6 pointer-events-z">
         <div
           ref={navRef}
           onMouseMove={handleMouseMove}
@@ -37,7 +37,7 @@ export const Navbar = ({ setShowContactModal }) => {
           style={{
             transform: `rotateY(${mousePos.x}deg) rotateX(${-mousePos.y}deg) translateY(${mousePos.y}px) translateX(${mousePos.x}px)`,
           }}
-          className="pointer-events-auto nav-glow-border p-px rounded-full w-[20]"
+          className="pointer-events-auto nav-glow-border p-px rounded-full w-[200]"
         >
           <div className="bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-full px-16 py-3 flex items-center gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.8)] transition-all group duration-500">
             <div className=" flex items-center gap-5 text-sm font-black uppercase tracking-[0.2em] text-slate-300">
