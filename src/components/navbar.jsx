@@ -29,7 +29,7 @@ export const Navbar = ({ setShowContactModal }) => {
   return (
     <>
       {/* Floating Header Navigation */}
-      <nav className="fixed left-0 right-0 z-50  flex justify-center mt-6 px-6 pointer-events-none">
+      <nav className="fixed left-0 right-0 z-50 flex justify-center mt-6 px-6 pointer-events-none">
         <div
           ref={navRef}
           onMouseMove={handleMouseMove}
