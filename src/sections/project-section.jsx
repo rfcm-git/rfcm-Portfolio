@@ -82,7 +82,7 @@ const ProjectSection = () => {
   return (
     <>
       {/* --- PROJECTS SECTION --- */}
-      <section id="projects" className="py-24 px-24 bg-slate-900/20 ">
+      <section id="projects" className="py-24 px-32 bg-slate-900/20 ">
         <div className="flex flex-col items-center text-center gap-6 mb-8">
           <div className="flex items-center gap-3">
             <div className="h-px w-8 bg-slate-800"></div>
@@ -113,7 +113,7 @@ const ProjectSection = () => {
                   </div>
                 </button>
 
-                <div className="p-8 flex flex-col gap-5 relative z-10 -mt-12 bg-slate-950/50 backdrop-blur-xl border-t border-slate-800 rounded-b-3xl grow">
+                <div className="flex flex-col gap-2 p-6 relative z-10 -mt-12 bg-slate-950/50 backdrop-blur-xl border-t border-slate-800 rounded-b-3xl grow">
                   <div className="flex justify-between items-start gap-4">
                     <h3 className="text-2xl font-bold text-white tracking-tight group-hover/card:text-emerald-400 transition-colors">{project.title}</h3>
 
@@ -166,7 +166,7 @@ const ProjectSection = () => {
                   </div>
 
                   <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{project.desc}</p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
+                  <div className="flex flex-wrap gap-2">
                     {project.tech.map((tool) => (
                       <span key={tool} className="px-2.5 py-1 bg-slate-900 border border-slate-800 rounded text-[10px] uppercase tracking-wider font-bold text-slate-500">{tool}</span>
                     ))}

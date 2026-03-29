@@ -24,6 +24,7 @@ const App = () => {
     <>
       <div className=" min-h-screen w-full bg-slate-950 text-slate-100 font-sans selection:bg-blue-500/30 overflow-hidden " >
         <IntroPage setShowMainContent={setShowMainContent} />
+        <ThreeBackground />
 
         {/* Persistent Notification System */}
         {notification && (
