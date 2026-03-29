@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle2, ExternalLink, ChevronDown, X, Play } from 'lucide-react';
-import { Github } from '../../../svc-icons.jsx';
+import { Github } from '../../../svc-icons';
 
 const ProjectDetailsModal = ({ selectedProject, setSelectedProject, setActiveVideo, triggerLiveViewPrompt, isVisible }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);

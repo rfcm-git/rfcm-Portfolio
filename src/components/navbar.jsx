@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Mail, Bot} from 'lucide-react';
-import { Linkedin, Facebook, Github } from '../../svc-icons.jsx';
+import { Linkedin, Facebook, Github } from '../../svc-icons';
 import { contact } from "../constants/contacts";
 
 export const Navbar = ({ setShowContactModal }) => {
