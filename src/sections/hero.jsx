@@ -100,8 +100,8 @@ export const HeroSection = () => {
           </div>
           <div className="lg:col-span-4 relative z-10">
             <img src="/assets/hero_image.png" alt="Hero Image"
-              className="rounded-3xl scale-90 filter-[drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
-                        hover:scale-95 transition-transform"
+              className="rounded-3xl scale-105 filter-[drop-shadow(1px_0_0_white)_drop-shadow(-1px_0_0_white)_drop-shadow(0_1px_0_white)_drop-shadow(0_-1px_0_white)]
+                        hover:scale-110 transition-transform"
             />
           </div>
         </div>
