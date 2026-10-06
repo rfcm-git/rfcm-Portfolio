@@ -18,7 +18,6 @@ export const services = [
       'Desktop & Enterprise Applications'
     ],
     projects: [
-      ,
       {
         id: 'p1',
         title: 'Hexagonal Pattern Visualization',
